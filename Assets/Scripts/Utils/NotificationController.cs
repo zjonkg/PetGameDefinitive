@@ -8,7 +8,7 @@ using Unity.Notifications.Android;
 
 public class NotificationController : MonoBehaviour
 {
-    private const string ChannelId = "FUA TIO";
+    private const string ChannelId = "FUA_TIO";
     private const string GroupId = "Main";
 
     private void Start()
@@ -16,15 +16,15 @@ public class NotificationController : MonoBehaviour
         StartCoroutine(AllowNotification());
     }
 
-    public void ActivateNotification()
+    public void SendNotification(string title, string message, int delaySeconds = 5)
     {
 #if UNITY_ANDROID
-        DateTime activateTime = DateTime.Now.AddSeconds(5);
-        CreateNotification(activateTime);
+        DateTime fireTime = DateTime.Now.AddSeconds(delaySeconds);
+        CreateNotification(title, message, fireTime);
 #endif
     }
 
-    private void CreateNotification(DateTime dateTime)
+    private void CreateNotification(string title, string message, DateTime dateTime)
     {
 #if UNITY_ANDROID
         // Registrar grupo de notificación
@@ -41,16 +41,16 @@ public class NotificationController : MonoBehaviour
             Id = ChannelId,
             Name = "Default Channel",
             Importance = Importance.Default,
-            Description = "No se jaja",
+            Description = "Canal de notificaciones",
             Group = GroupId
         };
         AndroidNotificationCenter.RegisterNotificationChannel(channel);
 
-       
+        // Crear y enviar la notificación
         var notification = new AndroidNotification
         {
-            Title = "OJITO",
-            Text = "Hola Laura uwu",
+            Title = title,
+            Text = message,
             FireTime = dateTime
         };
 
