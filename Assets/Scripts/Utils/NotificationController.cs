@@ -67,5 +67,6 @@ public class NotificationController : MonoBehaviour
             yield return null;
         }
 #endif
+        yield break;
     }
 }
