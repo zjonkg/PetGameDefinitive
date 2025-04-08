@@ -90,7 +90,7 @@ public class QrCode : MonoBehaviour
             if (result != null)
             {
                 _textOut.text = result.Text;
-                processQRController.ValidateQRCodeFromExternal(result.Text, "1");
+                processQRController.ValidateQRCodeFromExternal(result.Text, "6");
                 _scanned = true;
                 StopCamera();
             }
