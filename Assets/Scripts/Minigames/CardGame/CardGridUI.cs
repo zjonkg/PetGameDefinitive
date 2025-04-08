@@ -16,6 +16,7 @@ public class CardGridUI : MonoBehaviour
     [SerializeField] private List<Card> cardListToSort = new List<Card>();
     [SerializeField] private Transform cardContainer;
     [SerializeField] private Transform cardPrefab;
+    public static DifficultyEnum CurrentDifficulty { get; private set; }
 
     private void Start()
     {
@@ -29,25 +30,24 @@ public class CardGridUI : MonoBehaviour
 
     private void FillGrid()
     {
-        // Elige dificultad al azar
-        DifficultyEnum randomDifficulty = (DifficultyEnum)Random.Range(0, 3); 
+        CurrentDifficulty = (DifficultyEnum)Random.Range(0, 3);
 
         int cardsToShow = 0;
 
-        switch (randomDifficulty)
+        switch (CurrentDifficulty)
         {
             case DifficultyEnum.Easy:
-                cardsToShow = 6;
+                cardsToShow = 4;
                 break;
             case DifficultyEnum.Normal:
-                cardsToShow = 8;
+                cardsToShow = 6;
                 break;
             case DifficultyEnum.Hard:
-                cardsToShow = 10;
+                cardsToShow = 8;
                 break;
         }
 
-        Debug.Log("Dificultad aleatoria: " + randomDifficulty + " con " + cardsToShow + " cartas");
+        Debug.Log("Dificultad aleatoria: " + CurrentDifficulty + " con " + cardsToShow + " cartas");
 
         cardListToSort.Clear();
 
@@ -57,8 +57,7 @@ public class CardGridUI : MonoBehaviour
             cardListToSort.Add(cardList[i]);
         }
 
-        System.Random rnd = new System.Random();
-        IOrderedEnumerable<Card> randomized = cardListToSort.OrderBy(i => rnd.Next());
+        var randomized = cardListToSort.OrderBy(i => Random.value); 
 
         foreach (Card card in randomized)
         {
@@ -68,6 +67,5 @@ public class CardGridUI : MonoBehaviour
             cardTransform.GetComponent<CardSingleUI>().SetCardImage(card.cardImage);
         }
     }
-
-
 }
+
