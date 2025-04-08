@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 7405f82484c6c654c8ea7a0eaec41b0e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6132399397139833366
+    second: puppetrigg-removebg-preview (1)_0
+  - first:
+      213: 5830026530118360731
+    second: puppetrigg-removebg-preview (1)_1
+  - first:
+      213: -1973416717599377182
+    second: puppetrigg-removebg-preview (1)_2
+  - first:
+      213: -8713896017320648741
+    second: puppetrigg-removebg-preview (1)_3
+  - first:
+      213: 2450366854923829259
+    second: puppetrigg-removebg-preview (1)_4
+  - first:
+      213: 2412330735664959050
+    second: puppetrigg-removebg-preview (1)_5
+  - first:
+      213: -5264902030892987508
+    second: puppetrigg-removebg-preview (1)_6
+  - first:
+      213: -5702415505169559251
+    second: puppetrigg-removebg-preview (1)_7
+  - first:
+      213: 1068400767309809510
+    second: puppetrigg-removebg-preview (1)_8
+  - first:
+      213: -6246011752988438149
+    second: puppetrigg-removebg-preview (1)_9
+  - first:
+      213: 970151733031515392
+    second: puppetrigg-removebg-preview (1)_10
+  - first:
+      213: -6803555262789228479
+    second: puppetrigg-removebg-preview (1)_11
+  - first:
+      213: -1151078087217207704
+    second: puppetrigg-removebg-preview (1)_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 284
+        width: 230
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 612e657c2c8aa1550800000000000000
+      internalID: 6132399397139833366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_1
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 380
+        width: 63
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9edec68d3a68e050800000000000000
+      internalID: 5830026530118360731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_2
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 380
+        width: 64
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e8fba173f30d94e0800000000000000
+      internalID: -1973416717599377182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 168
+        width: 53
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf59ed8db5021780800000000000000
+      internalID: -8713896017320648741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_4
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 168
+        width: 57
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0040250ca3710220800000000000000
+      internalID: 2450366854923829259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_5
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 193
+        width: 94
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4e0114e5025a7120800000000000000
+      internalID: 2412330735664959050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_6
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 203
+        width: 242
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8b046f5f7f4fe6b0800000000000000
+      internalID: -5264902030892987508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_7
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 91
+        width: 116
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2150bc8f43fcd0b0800000000000000
+      internalID: -5702415505169559251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_8
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 60
+        width: 63
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667814556d8b3de00800000000000000
+      internalID: 1068400767309809510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_9
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 60
+        width: 62
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7195384765b159a0800000000000000
+      internalID: -6246011752988438149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_10
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 18
+        width: 32
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 005b2917cdba67d00800000000000000
+      internalID: 970151733031515392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_11
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 8
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14865b7098ae491a0800000000000000
+      internalID: -6803555262789228479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puppetrigg-removebg-preview (1)_12
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 0
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 866aeae049c8600f0800000000000000
+      internalID: -1151078087217207704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      puppetrigg-removebg-preview (1)_0: 6132399397139833366
+      puppetrigg-removebg-preview (1)_1: 5830026530118360731
+      puppetrigg-removebg-preview (1)_10: 970151733031515392
+      puppetrigg-removebg-preview (1)_11: -6803555262789228479
+      puppetrigg-removebg-preview (1)_12: -1151078087217207704
+      puppetrigg-removebg-preview (1)_2: -1973416717599377182
+      puppetrigg-removebg-preview (1)_3: -8713896017320648741
+      puppetrigg-removebg-preview (1)_4: 2450366854923829259
+      puppetrigg-removebg-preview (1)_5: 2412330735664959050
+      puppetrigg-removebg-preview (1)_6: -5264902030892987508
+      puppetrigg-removebg-preview (1)_7: -5702415505169559251
+      puppetrigg-removebg-preview (1)_8: 1068400767309809510
+      puppetrigg-removebg-preview (1)_9: -6246011752988438149
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
