@@ -67,6 +67,7 @@ public class ProcessQRController : MonoBehaviour
             {
                 // Manejo del error
                 Debug.LogError("Error en asignación: " + error);
+                ErrorMessageUI.Instance.ShowError("Mascota ya asignada a otro usuario");
                 _textOut.text = "Error en asignación: " + error;
             }
         );
