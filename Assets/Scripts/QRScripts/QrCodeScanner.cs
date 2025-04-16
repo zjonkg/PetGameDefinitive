@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using ZXing;
 using TMPro;
 using UnityEngine.UI;
-using ZXing.QrCode.Internal;
+using System.Collections;
 
 public class QrCode : MonoBehaviour
 {
@@ -10,20 +10,45 @@ public class QrCode : MonoBehaviour
     [SerializeField] private AspectRatioFitter _aspectRatioFitter;
     [SerializeField] private TextMeshProUGUI _textOut;
     [SerializeField] private RectTransform _scanZone;
-    [SerializeField] private Button _flashButton;
     [SerializeField] private ProcessQRController processQRController;
 
     private bool _isCamAvailable;
     private WebCamTexture _webCamTexture;
-    private bool _isFlashOn = false;
-    private AndroidJavaObject _camera;
     private bool _scanned = false;
 
-    void Start()
+    private IEnumerator Start()
     {
-        SetupCamera();
-        _flashButton.onClick.AddListener(ToggleFlash);
+        if (!Application.HasUserAuthorization(UserAuthorization.WebCam))
+        {
+            yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
+        }
+
+        if (Application.HasUserAuthorization(UserAuthorization.WebCam))
+        {
+            // 🔁 Esperar hasta que WebCamTexture.devices tenga al menos una cámara
+            float timer = 0f;
+            while (WebCamTexture.devices.Length == 0 && timer < 2f)
+            {
+                yield return new WaitForSeconds(0.5f);
+                timer += 0.5f;
+            }
+
+            if (WebCamTexture.devices.Length > 0)
+            {
+                SetupCamera();
+            }
+            else
+            {
+                _textOut.text = "NO CAMERA FOUND AFTER PERMISSION";
+            }
+        }
+        else
+        {
+            _textOut.text = "CAMERA PERMISSION DENIED";
+        }
     }
+
+
 
     void Update()
     {
@@ -90,7 +115,7 @@ public class QrCode : MonoBehaviour
             if (result != null)
             {
                 _textOut.text = result.Text;
-                processQRController.ValidateQRCodeFromExternal(result.Text, "1");
+                processQRController.ValidateQRCodeFromExternal(result.Text, "6");
                 _scanned = true;
                 StopCamera();
             }
@@ -107,50 +132,6 @@ public class QrCode : MonoBehaviour
         {
             _webCamTexture.Stop();
             _isCamAvailable = false;
-        }
-    }
-
-    private void ToggleFlash()
-    {
-#if UNITY_ANDROID
-        try
-        {
-            if (_camera == null)
-            {
-                AndroidJavaClass cameraClass = new AndroidJavaClass("android.hardware.Camera");
-                _camera = cameraClass.CallStatic<AndroidJavaObject>("open", 0);
-            }
-
-            if (_isFlashOn)
-            {
-                AndroidJavaObject parameters = _camera.Call<AndroidJavaObject>("getParameters");
-                parameters.Call("setFlashMode", "off");
-                _camera.Call("setParameters", parameters);
-                _camera.Call("stopPreview");
-            }
-            else
-            {
-                AndroidJavaObject parameters = _camera.Call<AndroidJavaObject>("getParameters");
-                parameters.Call("setFlashMode", "torch");
-                _camera.Call("setParameters", parameters);
-                _camera.Call("startPreview");
-            }
-
-            _isFlashOn = !_isFlashOn;
-        }
-        catch
-        {
-            _textOut.text = "FLASH NOT SUPPORTED";
-        }
-#endif
-    }
-
-    private void OnDestroy()
-    {
-        if (_camera != null)
-        {
-            _camera.Call("release");
-            _camera = null;
         }
     }
 }

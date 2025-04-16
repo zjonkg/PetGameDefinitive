@@ -26,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QRScreen.unity
     guid: 1f29ee0dfac1cca4e9711ac6bead65f1
+  - enabled: 0
+    path: Assets/Scenes/Minigames/MemoryGame.unity
+    guid: 1c087054c7fb00d45b5295d55aeb260d
+  - enabled: 0
+    path: Assets/Scenes/Minigames/AngryLaura.unity
+    guid: 3f2fbf0ee197ede4c98da90b3fc1b51f
+  - enabled: 0
+    path: Assets/Scenes/LoginScreen.unity
+    guid: fc6e490dc247c834296bb0e40ee56299
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 719160bb5df15e145ab7f87dea4b98be, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8639b141c86c0624db2ce806eac69a6b, type: 2}
