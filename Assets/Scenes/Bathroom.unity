@@ -1168,6 +1168,7 @@ GameObject:
   - component: {fileID: 411802947}
   - component: {fileID: 411802949}
   - component: {fileID: 411802950}
+  - component: {fileID: 411802951}
   m_Layer: 5
   m_Name: ShowerButton
   m_TagString: Untagged
@@ -1310,6 +1311,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &411802951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411802945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb17cc0a9ee003459f23dfd4ec2e89b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  petManager: {fileID: 646647024}
+  showerUI: {fileID: 350071780}
 --- !u!1001 &447612044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1607,51 +1622,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506710561}
   m_CullTransparentMesh: 1
---- !u!1 &518376797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 518376799}
-  - component: {fileID: 518376798}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &518376798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518376797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb17cc0a9ee003459f23dfd4ec2e89b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showerButton: {fileID: 411802949}
---- !u!4 &518376799
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518376797}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 253.99423, y: 626.3415, z: 3.8147502}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &536153909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1948,6 +1918,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2dfe761924def454687e6502dca8b5cc, type: 3}
   m_PrefabInstance: {fileID: 575367850}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &646647023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 646647025}
+  - component: {fileID: 646647024}
+  m_Layer: 0
+  m_Name: PetManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &646647024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646647023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e7b2d3b4b358345b3e3075cf75cc15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &646647025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646647023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3738618, y: -0.8793495, z: -6.536169}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &784823750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4201,4 +4215,4 @@ SceneRoots:
   - {fileID: 350071784}
   - {fileID: 266719510}
   - {fileID: 1581940091}
-  - {fileID: 518376799}
+  - {fileID: 646647025}
