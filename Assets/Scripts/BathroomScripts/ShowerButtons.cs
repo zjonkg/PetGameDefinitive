@@ -6,15 +6,22 @@ public class UIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     Animator animator;
 
-    public Button showerButton;
+    
+    public PetManager petManager;
+    public GameObject showerUI;
+
 
     private void Start()
     {
 
-        showerButton.onClick.AddListener(OnDropiePress);
+        GetComponent<Button>().onClick.AddListener(() =>
+        {
+            petManager.changeState(new ShowerStmt(showerUI));
+        });
     }
     public void OnDropiePress()
     {
+        petManager.changeState(new ShowerStmt(showerUI));
         Debug.Log("Boton funcionando");
     }
 
