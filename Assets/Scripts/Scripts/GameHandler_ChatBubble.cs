@@ -10,9 +10,9 @@ public class GameHandler_ChatBubble : MonoBehaviour
 
     private void Start()
     {
-         ChatBubble.Create(playerTransform, new Vector3(-0.7f, 1f, 1.5f), ChatBubble.IconType.Neutral, "Here is some text!");
+         ChatBubble.Create(playerTransform, new Vector3(0, 1.7f, 2.5f), ChatBubble.IconType.Neutral, "Here is some text!");
 
-        // Crear burbujas de chat periódicamente para el jugador
+
         FunctionPeriodic.Create(() => {
             string message = GetRandomMessage();
 
@@ -22,11 +22,11 @@ public class GameHandler_ChatBubble : MonoBehaviour
             ChatBubble.IconType icon = iconArray[Random.Range(0, iconArray.Length)];
 
  
-            ChatBubble.Create(playerTransform, new Vector3(-0.7f, 1f, 1.5f), icon, message);
+            ChatBubble.Create(playerTransform, new Vector3(0, 1.7f, 2.5f), icon, message);
         }, 5.5f);  
     }
 
-    // Método para obtener un mensaje aleatorio
+
     private string GetRandomMessage()
     {
         string[] messageArray = new string[] {
