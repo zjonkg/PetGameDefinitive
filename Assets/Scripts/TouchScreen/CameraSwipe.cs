@@ -3,9 +3,9 @@ using System.Collections;
 
 public class CameraSwipe : MonoBehaviour
 {
-    public Transform[] cameraPositions; // Puntos donde se moverá la cámara
-    public float swipeThreshold = 50f;  // Distancia mínima para detectar el swipe
-    public float moveSpeed = 5f;        // Velocidad del movimiento de la cámara
+    public Transform[] cameraPositions; 
+    public float swipeThreshold = 50f;  
+    public float moveSpeed = 5f;        
     private int currentIndex = 0;
     private Vector2 startTouchPosition;
 

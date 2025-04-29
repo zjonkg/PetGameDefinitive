@@ -151,7 +151,7 @@ public class SceneSwipe : MonoBehaviour
 
     private CanvasGroup FindFadePanel()
     {
-        GameObject panelObject = GameObject.Find("FadePanel"); // Busca el panel por su nombre
+        GameObject panelObject = GameObject.Find("FadePanel"); 
         if (panelObject != null)
         {
             return panelObject.GetComponent<CanvasGroup>();
