@@ -1,62 +1,58 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement; // Necesario para cargar escenas
 
 public class RadialIndicatorClick : MonoBehaviour
 {
-    [Header("Radial Timers")]
-    [SerializeField] private float indicatorTimer = 1.0f;
-    [SerializeField] private float maxIndicatorTimer = 10.0f;
-
-    [Header("UI Indicator")]
+    [Header("Radial Timer Settings")]
+    [SerializeField] private float fillDuration = 5.0f; // Tiempo en segundos para llenar
     [SerializeField] private Image radialIndicator = null;
+    [SerializeField] private UnityEvent onFillComplete = null;
 
-    [Header("Key Codes")]
-    [SerializeField] private KeyCode selectKey = KeyCode.Mouse0;
+    [Header("Scene Names")]
+    private string sceneIfPlayerIdExists = "Bathroom"; // Nombre de la escena si existe player_id
+    private string sceneIfPlayerIdMissing = "LoginScreen";   // Nombre de la escena si NO existe player_id
 
-    [Header("Unity Event")]
-    [SerializeField] private UnityEvent myEvent = null;
+    private float timer = 0f;
+    private bool isFilling = true;
 
-    private bool shouldUpdate = false;
+    void Start()
+    {
+        if (radialIndicator != null)
+        {
+            radialIndicator.fillAmount = 0f; // Empieza vacío
+            radialIndicator.enabled = true;
+        }
+    }
 
     void Update()
     {
-        if (Input.GetKey(selectKey))
+        if (!isFilling || radialIndicator == null)
+            return;
+
+        timer += Time.deltaTime;
+        radialIndicator.fillAmount = Mathf.Clamp01(timer / fillDuration);
+
+        if (timer >= fillDuration)
         {
-            shouldUpdate = false;
-            indicatorTimer -= Time.deltaTime;
-            radialIndicator.enabled = true;
-            radialIndicator.fillAmount = indicatorTimer;
-
-            if (indicatorTimer <= 0)
-            {
-                indicatorTimer = maxIndicatorTimer;
-                radialIndicator.fillAmount = maxIndicatorTimer;
-                radialIndicator.enabled = false;
-                myEvent.Invoke();
-            }
+            isFilling = false;
+            onFillComplete?.Invoke();
+            CheckPlayerPrefAndLoadScene();
         }
+    }
 
+    private void CheckPlayerPrefAndLoadScene()
+    {
+        if (PlayerPrefs.HasKey("player_id") && !string.IsNullOrEmpty(PlayerPrefs.GetString("player_id")))
+        {
+            // Si existe player_id, carga la escena correspondiente
+            SceneManager.LoadScene(sceneIfPlayerIdExists);
+        }
         else
         {
-            if (shouldUpdate)
-            {
-                indicatorTimer += Time.deltaTime;
-                radialIndicator.fillAmount = indicatorTimer;
-
-                if (indicatorTimer >= maxIndicatorTimer)
-                {
-                    indicatorTimer = maxIndicatorTimer;
-                    radialIndicator.fillAmount = maxIndicatorTimer;
-                    radialIndicator.enabled = false;
-                    shouldUpdate = false;
-                }
-            }
-        }
-
-        if (Input.GetKeyUp(selectKey))
-        {
-            shouldUpdate = true;
+            // Si NO existe player_id, carga otra escena
+            SceneManager.LoadScene(sceneIfPlayerIdMissing);
         }
     }
 }
