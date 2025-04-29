@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/NotificationExample.unity
     guid: 8a92dbd954405334c804689e5beb9a07
   - enabled: 0
-    path: Assets/Scenes/Main.unity
+    path: Assets/Scenes/Kitchen.unity
     guid: 948d1b82f572e3645919837bccf8cd05
   - enabled: 0
     path: Assets/Scenes/QRScreen.unity
