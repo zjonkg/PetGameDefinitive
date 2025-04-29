@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadingScreen.unity
     guid: e5cc8eb7c066bfd42a6f09c745e8e445
   - enabled: 0
@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LoginScreen.unity
     guid: fc6e490dc247c834296bb0e40ee56299
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Bathroom.unity
     guid: 482e4231b2bfc5f42adedb3b426937e0
   - enabled: 0
