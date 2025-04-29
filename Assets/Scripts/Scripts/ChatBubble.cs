@@ -6,6 +6,7 @@ using TMPro;
 public class ChatBubble : MonoBehaviour
 {
 
+
     public static void Create(Transform parent, Vector3 localPosition, IconType iconType, string text)
     {
         // Asegúrate de que pfChatBubble esté asignado en GameAssets
@@ -18,7 +19,7 @@ public class ChatBubble : MonoBehaviour
         {
             chatBubble.Setup(iconType, text);
             // Destruir la burbuja después de 6 segundos
-            Destroy(chatBubble.gameObject, 6f);
+            Destroy(chatBubble.gameObject, 5.5f);
         }
         else
         {
@@ -33,6 +34,9 @@ public class ChatBubble : MonoBehaviour
         Angry,
     }
 
+
+    [SerializeField] private float textSpeed = 0.02f;
+    private Coroutine typingCoroutine;
     [SerializeField] private Sprite happyIconSprite;
     [SerializeField] private Sprite neutralIconSprite;
     [SerializeField] private Sprite angryIconSprite;
@@ -73,24 +77,28 @@ public class ChatBubble : MonoBehaviour
 
             textMeshPro.enableWordWrapping = true;
             textMeshPro.enableAutoSizing = false;
-            textMeshPro.rectTransform.sizeDelta = new Vector2(maxTextWidth, 0f);
+            textMeshPro.maxVisibleLines = 2;
+            textMeshPro.overflowMode = TextOverflowModes.Overflow;
 
-            textMeshPro.SetText(text);
-            textMeshPro.ForceMeshUpdate();
+            textMeshPro.rectTransform.sizeDelta = new Vector2(maxTextWidth, textMeshPro.fontSize * 0.001f + paddingY * 1f);
+            textMeshPro.text = "";
 
-            Vector2 textSize = textMeshPro.GetRenderedValues(false);
+            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+            typingCoroutine = StartCoroutine(TypeText(text));
 
-            float backgroundWidth = Mathf.Min(textSize.x, maxTextWidth) + paddingX * 2f;
-            float backgroundHeight = textSize.y + paddingY * 2f;
+            Vector2 textSize = new Vector2(maxTextWidth, textMeshPro.fontSize * 2);
+
+            float backgroundWidth = textSize.x + paddingX * 4f;
+            float backgroundHeight = textSize.y / 4f;
             backgroundSpriteRenderer.size = new Vector2(backgroundWidth, backgroundHeight);
 
             textMeshPro.rectTransform.localPosition = Vector3.zero;
             backgroundSpriteRenderer.transform.localPosition = Vector3.zero;
 
-            // 📌 Posicionar el ícono arriba del fondo
+            // Posicionamiento del ícono
             if (iconSpriteRenderer != null)
             {
-                float spacingAbove = 2f; // Espacio extra entre el fondo y el ícono
+                float spacingAbove = 2f;
                 iconSpriteRenderer.transform.localPosition = new Vector3(
                     0f,
                     backgroundHeight / 2f + iconSpriteRenderer.bounds.size.y / 2f + spacingAbove,
@@ -100,7 +108,48 @@ public class ChatBubble : MonoBehaviour
         }
     }
 
+    IEnumerator TypeText(string fullText)
+    {
+        textMeshPro.text = "";
+        int segmentStart = 0;
 
+        while (segmentStart < fullText.Length)
+        {
+            textMeshPro.text = "";
+            int lastSpaceIndex = -1;
+            int lastValidCharIndex = segmentStart;
+
+            for (int i = segmentStart + 1; i <= fullText.Length; i++)
+            {
+                string currentText = fullText.Substring(segmentStart, i - segmentStart);
+                textMeshPro.text = currentText;
+                textMeshPro.ForceMeshUpdate();
+
+                if (textMeshPro.textInfo.lineCount > 2)
+                {
+                    // Si nos pasamos, cortamos hasta el último espacio (si existe)
+                    if (lastSpaceIndex != -1)
+                        lastValidCharIndex = lastSpaceIndex;
+                    break;
+                }
+
+                // Guardamos el último espacio para cortar de forma segura
+                if (fullText[i - 1] == ' ')
+                {
+                    lastSpaceIndex = i - 1;
+                }
+
+                lastValidCharIndex = i;
+                yield return new WaitForSeconds(textSpeed);
+            }
+
+            // Mostramos el segmento válido
+            textMeshPro.text = fullText.Substring(segmentStart, lastValidCharIndex - segmentStart);
+
+            yield return new WaitForSeconds(1f);
+            segmentStart = lastValidCharIndex;
+        }
+    }
 
 
 
