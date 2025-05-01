@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tiny_treats_plaid_pattern_red_0: 1961100484586716259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

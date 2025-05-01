@@ -9,23 +9,30 @@ public class ChatBubble : MonoBehaviour
 
     public static void Create(Transform parent, Vector3 localPosition, IconType iconType, string text)
     {
-        // Asegúrate de que pfChatBubble esté asignado en GameAssets
+        // Instanciamos la burbuja
         Transform chatBubbleTransform = Instantiate(GameAssets.i.pfChatBubble, parent);
         chatBubbleTransform.localPosition = localPosition;
 
-        // Inicializa la burbuja de chat
+        // Inicializamos
         ChatBubble chatBubble = chatBubbleTransform.GetComponent<ChatBubble>();
         if (chatBubble != null)
         {
             chatBubble.Setup(iconType, text);
-            // Destruir la burbuja después de 6 segundos
-            Destroy(chatBubble.gameObject, 5.5f);
+
+            // Duración basada en el largo del texto
+            float baseTime = 1.5f;
+            float timePerCharacter = 0.06f;
+            float duration = Mathf.Clamp(baseTime + text.Length * timePerCharacter, 2f, 12f);
+
+            // Destruimos después de la duración calculada
+            Destroy(chatBubble.gameObject, duration);
         }
         else
         {
             Debug.LogError("No se encontró el componente ChatBubble en el prefab.");
         }
     }
+
 
     public enum IconType
     {
@@ -111,45 +118,50 @@ public class ChatBubble : MonoBehaviour
     IEnumerator TypeText(string fullText)
     {
         textMeshPro.text = "";
-        int segmentStart = 0;
 
-        while (segmentStart < fullText.Length)
+        string[] words = fullText.Split(' ');
+        List<string> lines = new List<string>();
+        string currentLine = "";
+
+        foreach (string word in words)
         {
-            textMeshPro.text = "";
-            int lastSpaceIndex = -1;
-            int lastValidCharIndex = segmentStart;
+            string testLine = string.IsNullOrEmpty(currentLine) ? word : currentLine + " " + word;
+            textMeshPro.text = testLine;
+            textMeshPro.ForceMeshUpdate();
 
-            for (int i = segmentStart + 1; i <= fullText.Length; i++)
+            if (textMeshPro.textInfo.lineCount > 2)
             {
-                string currentText = fullText.Substring(segmentStart, i - segmentStart);
-                textMeshPro.text = currentText;
-                textMeshPro.ForceMeshUpdate();
+                // Guardamos la línea anterior y empezamos nueva
+                lines.Add(currentLine);
+                currentLine = word;
+            }
+            else
+            {
+                currentLine = testLine;
+            }
+        }
 
-                if (textMeshPro.textInfo.lineCount > 2)
-                {
-                    // Si nos pasamos, cortamos hasta el último espacio (si existe)
-                    if (lastSpaceIndex != -1)
-                        lastValidCharIndex = lastSpaceIndex;
-                    break;
-                }
+        // Añadimos la última línea
+        if (!string.IsNullOrEmpty(currentLine))
+            lines.Add(currentLine);
 
-                // Guardamos el último espacio para cortar de forma segura
-                if (fullText[i - 1] == ' ')
-                {
-                    lastSpaceIndex = i - 1;
-                }
+        textMeshPro.text = "";
 
-                lastValidCharIndex = i;
+        // Ahora escribimos cada línea, con efecto de letra por letra
+        foreach (string line in lines)
+        {
+            string current = "";
+            foreach (char c in line)
+            {
+                current += c;
+                textMeshPro.text = current;
                 yield return new WaitForSeconds(textSpeed);
             }
 
-            // Mostramos el segmento válido
-            textMeshPro.text = fullText.Substring(segmentStart, lastValidCharIndex - segmentStart);
-
-            yield return new WaitForSeconds(1f);
-            segmentStart = lastValidCharIndex;
+            yield return new WaitForSeconds(1f); // Espera antes de la siguiente línea
         }
     }
+
 
 
 
