@@ -19,7 +19,7 @@ namespace MyGame.Auth
 
     public class LoginResponse
     {
-        public string message;
+        public string id;
     }
 
     public class RegisterRequest

@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AuthManager : MonoBehaviour
 {
@@ -41,10 +42,13 @@ public class AuthManager : MonoBehaviour
             (response) =>
             {
                 Debug.Log("Login exitoso. Token: " + response);
-                textMeshPro.text = "Login exitoso. Token: " + response.message; // Asumiendo que el token esté en 'response.token'
+                PlayerPrefs.SetString("player_id", response.id.ToString());
+                PlayerPrefs.Save();
 
 
-                // Aquí puedes guardar el token o redirigir de escena
+                SceneManager.LoadScene("House");
+
+
             },
             (error) =>
             {
