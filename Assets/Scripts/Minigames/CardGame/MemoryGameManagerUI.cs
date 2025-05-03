@@ -5,11 +5,12 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI; // Asegúrate de usar esto si vas a mostrar el tiempo en pantalla
+using ShyLaura.Database;
 
 public class MemoryGameManagerUI : MinigamesBase
 {
     public static MemoryGameManagerUI Instance { get; private set; }
-
+    public GameObject winPanel;
     [SerializeField] private CardGroup cardGroup;
     [SerializeField] private List<CardSingleUI> cardSingleUIList = new List<CardSingleUI>();
     [SerializeField] private TextMeshProUGUI timerText; 
@@ -110,7 +111,30 @@ public class MemoryGameManagerUI : MinigamesBase
         yield return new WaitForSeconds(0.75f);
 
         Debug.Log("Has ganado");
+
+        using (var scoreDb = new ScoreMatch())
+        {
+            string playerId = PlayerPrefs.GetString("player_id", "default_id");
+            string matchId = System.Guid.NewGuid().ToString(); // ID único por partida
+            int score = CalculateScore(); // Implementa tu lógica
+            int coinGained = Mathf.FloorToInt(timeRemaining); // O lo que represente las monedas
+
+            scoreDb.insertData(playerId, matchId, score, coinGained);
+            Debug.Log("Datos guardados en la DB.");
+        }
+
+        winPanel.SetActive(true);
     }
+
+
+    private int CalculateScore()
+    {
+        // Lógica personalizada, aquí solo un ejemplo simple
+        int baseScore = 1000;
+        int bonus = Mathf.FloorToInt(timeRemaining * 10);
+        return baseScore + bonus;
+    }
+
 
     public void Restart()
     {
