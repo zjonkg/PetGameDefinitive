@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cepillo_0: -8627316591167738649
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
