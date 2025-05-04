@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 152542075}
   - component: {fileID: 152542074}
   - component: {fileID: 152542073}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Memory Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1280922241}
   - {fileID: 1903748253}
   m_Father: {fileID: 406353314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -391,7 +390,7 @@ GameObject:
   - component: {fileID: 463618263}
   - component: {fileID: 463618262}
   - component: {fileID: 463618261}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Coming Soon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +511,7 @@ GameObject:
   - component: {fileID: 724429053}
   - component: {fileID: 724429052}
   - component: {fileID: 724429051}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +660,7 @@ GameObject:
   - component: {fileID: 902075835}
   - component: {fileID: 902075834}
   - component: {fileID: 902075836}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1280922241}
   - component: {fileID: 1280922242}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Minigames Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,12 +833,12 @@ RectTransform:
   - {fileID: 463618260}
   - {fileID: 1853295908}
   - {fileID: 1887843695}
-  m_Father: {fileID: 387336721}
+  m_Father: {fileID: 1903748253}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
   m_AnchorMax: {x: 0.9, y: 0.9}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -520}
+  m_AnchoredPosition: {x: 0, y: -0.00024414062}
+  m_SizeDelta: {x: 94.627014, y: -56.786987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280922242
 MonoBehaviour:
@@ -877,7 +876,7 @@ GameObject:
   - component: {fileID: 1444745504}
   - component: {fileID: 1444745503}
   - component: {fileID: 1444745502}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1119,7 @@ GameObject:
   - component: {fileID: 1515070389}
   - component: {fileID: 1515070388}
   - component: {fileID: 1515070387}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1348,7 +1347,7 @@ GameObject:
   - component: {fileID: 1597007832}
   - component: {fileID: 1597007831}
   - component: {fileID: 1597007830}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FruitBasket Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1469,7 +1468,7 @@ GameObject:
   - component: {fileID: 1643818726}
   - component: {fileID: 1643818725}
   - component: {fileID: 1643818724}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1705,7 +1704,7 @@ GameObject:
   - component: {fileID: 1853295911}
   - component: {fileID: 1853295910}
   - component: {fileID: 1853295909}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Coming Soon (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1826,7 +1825,7 @@ GameObject:
   - component: {fileID: 1887843698}
   - component: {fileID: 1887843697}
   - component: {fileID: 1887843696}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Coming Soon (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1946,7 +1945,7 @@ GameObject:
   - component: {fileID: 1903748253}
   - component: {fileID: 1903748255}
   - component: {fileID: 1903748254}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SelectorPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1964,12 +1963,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1280922241}
   m_Father: {fileID: 387336721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000042915, y: 43.10205}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -118.2839, y: -579.0159}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903748254
@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2022,7 +2022,7 @@ GameObject:
   - component: {fileID: 2056869086}
   - component: {fileID: 2056869085}
   - component: {fileID: 2056869084}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2171,7 +2171,7 @@ GameObject:
   - component: {fileID: 2103830190}
   - component: {fileID: 2103830189}
   - component: {fileID: 2103830188}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Coming Soon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
