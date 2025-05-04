@@ -32,7 +32,7 @@ public class WeatherTester : MonoBehaviour
 
     IEnumerator CheckPermissionAndRun()
     {
-#if UNITY_ANDROID
+
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
             Permission.RequestUserPermission(Permission.FineLocation);
@@ -47,10 +47,8 @@ public class WeatherTester : MonoBehaviour
         {
             Debug.LogError("Permiso de ubicación denegado por el usuario.");
         }
-#else
-        StartCoroutine(GetWeatherAtCurrentLocation());
-#endif
 
+    StartCoroutine(GetWeatherAtCurrentLocation());
 
     }
 }
