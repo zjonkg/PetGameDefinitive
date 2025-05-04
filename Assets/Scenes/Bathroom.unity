@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petManager: {fileID: 646647024}
   showerUI: {fileID: 350071780}
-  petAnim: {fileID: 343854660}
+  petAnim: {fileID: 960557326933361920}
 --- !u!1001 &447612044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4252,6 +4252,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2484872367821102800, guid: 686b8b65e6be4e841a4f8fae8b55461e, type: 3}
   m_PrefabInstance: {fileID: 960557326933361918}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &960557326933361920 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5707263184579332271, guid: 686b8b65e6be4e841a4f8fae8b55461e, type: 3}
+  m_PrefabInstance: {fileID: 960557326933361918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4264,3 +4269,5 @@ SceneRoots:
   - {fileID: 350071784}
   - {fileID: 266719510}
   - {fileID: 1581940091}
+  - {fileID: 225424151}
+  - {fileID: 646647025}
