@@ -23,6 +23,14 @@ public class ShoppingCartManager : MonoBehaviour
         public int totalPrice => quantity * price;
     }
 
+    [System.Serializable]
+    public class ShoppingCartPayload
+    {
+        public int user;
+        public List<CartItem> item = new List<CartItem>();
+        public int totalPrice; // Nuevo campo
+    }
+
     void Awake()
     {
         ItemShop.OnItemUpdated += UpdateCart;
@@ -85,10 +93,31 @@ public class ShoppingCartManager : MonoBehaviour
             return;
         }
 
-        string jsonToSend = JsonConvert.SerializeObject(cartItemsForSend, Formatting.Indented);
+        ShoppingCartPayload payload = new ShoppingCartPayload();
+
+        if (PlayerPrefs.HasKey("userId"))
+        {
+            payload.user = PlayerPrefs.GetInt("userId");
+        }
+        else
+        {
+            Debug.LogError("No hay un usuario logueado.");
+            return;
+        }
+
+        payload.item = cartItemsForSend;
+
+        // Calcular el total general
+        payload.totalPrice = 0;
+        foreach (var item in cartItemsForSend)
+        {
+            payload.totalPrice += item.totalPrice;
+        }
+
+        string jsonToSend = JsonConvert.SerializeObject(payload, Formatting.Indented);
         Debug.Log("Datos a enviar al servidor:\n" + jsonToSend);
 
-        // Aquí puedes hacer una llamada HTTP POST a tu endpoint:
+        // Opcional: Iniciar corrutina para enviar por HTTP
         // StartCoroutine(SendCartToServer(jsonToSend));
     }
 }
