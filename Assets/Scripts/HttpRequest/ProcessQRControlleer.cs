@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
-using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 
 public class ProcessQRController : MonoBehaviour
@@ -62,6 +62,7 @@ public class ProcessQRController : MonoBehaviour
                 // Manejo de la respuesta exitosa
                 Debug.Log("Respuesta de asignación: Mascota asignada correctamente.");
                 _textOut.text = "Mascota asignada correctamente.";
+                SceneManager.LoadScene("House");
             },
             (error) =>
             {
