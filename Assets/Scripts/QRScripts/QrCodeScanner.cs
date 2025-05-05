@@ -48,8 +48,6 @@ public class QrCode : MonoBehaviour
         }
     }
 
-
-
     void Update()
     {
         if (!_isCamAvailable || _scanned) return;
@@ -115,7 +113,8 @@ public class QrCode : MonoBehaviour
             if (result != null)
             {
                 _textOut.text = result.Text;
-                processQRController.ValidateQRCodeFromExternal(result.Text, "6");
+                int player_id = PlayerPrefs.GetInt("player_id");
+                processQRController.ValidateQRCodeFromExternal(result.Text, player_id.ToString());
                 _scanned = true;
                 StopCamera();
             }

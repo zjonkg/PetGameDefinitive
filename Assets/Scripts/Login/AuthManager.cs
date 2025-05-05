@@ -11,7 +11,7 @@ public class AuthManager : MonoBehaviour
     public static AuthManager Instance { get; private set; }
 
     private string apiUrl = "https://api-management-pet-production.up.railway.app/user/login";
-    private string registerUrl = "https://api-management-pet-production.up.railway.app/user/signup";
+    private string registerUrl = "https://api-management-pet-production.up.railway.app/user/singup";
 
     [SerializeField]
     public TMP_Text textMeshPro; // Cambia el tipo a TMP_Text
@@ -43,11 +43,14 @@ public class AuthManager : MonoBehaviour
             {
                 Debug.Log("Login exitoso. Token: " + response);
                 PlayerPrefs.SetString("player_id", response.id.ToString());
+                PlayerPrefs.SetString("has_mascot", response.has_mascot.ToString());
                 PlayerPrefs.Save();
 
+                if (response.has_mascot) {
+                    SceneManager.LoadScene("Hall");
+                }
 
-                SceneManager.LoadScene("House");
-
+                SceneManager.LoadScene("QRScreen");
 
             },
             (error) =>
