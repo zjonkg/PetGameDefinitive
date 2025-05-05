@@ -20,13 +20,7 @@ namespace MyGame.Auth
     public class LoginResponse
     {
         public string id;
-        public bool has_mascot;
-
-        public int has_mascot_integer
-        {
-            get => has_mascot ? 1 : 0;
-            set => has_mascot = value == 1;
-        }
+        public Boolean has_mascot;
     }
 
     public class RegisterRequest

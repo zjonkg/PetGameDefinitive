@@ -1,5 +1,7 @@
 using UnityEngine;
+
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 using TMPro;
@@ -22,10 +24,11 @@ public class ShoppingCartManager : MonoBehaviour
     }
 
     [System.Serializable]
-    public class CartPayload
+    public class ShoppingCartPayload
     {
-        public List<CartItem> items;
-        public int grandTotal;
+        public int user;
+        public List<CartItem> item = new List<CartItem>();
+        public int totalPrice; // Nuevo campo
     }
 
     void Awake()
@@ -90,22 +93,31 @@ public class ShoppingCartManager : MonoBehaviour
             return;
         }
 
-        int grandTotal = 0;
-        foreach (var item in cartItemsForSend)
+        ShoppingCartPayload payload = new ShoppingCartPayload();
+
+        if (PlayerPrefs.HasKey("userId"))
         {
-            grandTotal += item.totalPrice;
+            payload.user = PlayerPrefs.GetInt("userId");
+        }
+        else
+        {
+            Debug.LogError("No hay un usuario logueado.");
+            return;
         }
 
-        CartPayload payload = new CartPayload
+        payload.item = cartItemsForSend;
+
+        // Calcular el total general
+        payload.totalPrice = 0;
+        foreach (var item in cartItemsForSend)
         {
-            items = cartItemsForSend,
-            grandTotal = grandTotal
-        };
+            payload.totalPrice += item.totalPrice;
+        }
 
         string jsonToSend = JsonConvert.SerializeObject(payload, Formatting.Indented);
         Debug.Log("Datos a enviar al servidor:\n" + jsonToSend);
 
-        // Aquí puedes hacer una llamada HTTP POST a tu endpoint:
+        // Opcional: Iniciar corrutina para enviar por HTTP
         // StartCoroutine(SendCartToServer(jsonToSend));
     }
 }
