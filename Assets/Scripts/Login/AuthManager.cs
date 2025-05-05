@@ -43,6 +43,7 @@ public class AuthManager : MonoBehaviour
             {
                 Debug.Log("Login exitoso. Token: " + response);
                 PlayerPrefs.SetString("player_id", response.id.ToString());
+                PlayerPrefs.SetInt("has_mascot", response.has_mascot_integer);
                 PlayerPrefs.Save();
 
 
