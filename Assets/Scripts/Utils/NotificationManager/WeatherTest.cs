@@ -25,24 +25,14 @@ public class WeatherTester : MonoBehaviour
             },
             (error) =>
             {
-                Debug.LogWarning("Ubicación no obtenida: " + error);
-                // Coordenadas de Barcelona (aproximadamente)
-                float barcelonaLat = 41.38879f;
-                float barcelonaLon = 2.15899f;
-
-                Debug.Log("Usando ubicación por defecto: Barcelona");
-                StartCoroutine(weatherService.GetTomorrowWeather(
-                    barcelonaLat, barcelonaLon,
-                    (resumen) => Debug.Log(resumen + " (Barcelona)"),
-                    (climaError) => Debug.LogError("Clima error con ubicación por defecto: " + climaError)
-                ));
+                Debug.LogError("Ubicación error: " + error);
             }
         );
     }
 
     IEnumerator CheckPermissionAndRun()
     {
-#if UNITY_ANDROID
+
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
             Permission.RequestUserPermission(Permission.FineLocation);
@@ -55,19 +45,10 @@ public class WeatherTester : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Permiso de ubicación denegado por el usuario. Usando ubicación por defecto.");
-            // Coordenadas de Barcelona directamente si no hay permiso
-            float barcelonaLat = 41.38879f;
-            float barcelonaLon = 2.15899f;
-
-            StartCoroutine(weatherService.GetTomorrowWeather(
-                barcelonaLat, barcelonaLon,
-                (resumen) => Debug.Log(resumen + " (Barcelona)"),
-                (error) => Debug.LogError("Clima error con ubicación por defecto: " + error)
-            ));
+            Debug.LogError("Permiso de ubicación denegado por el usuario.");
         }
-#else
-        StartCoroutine(GetWeatherAtCurrentLocation());
-#endif
+
+    StartCoroutine(GetWeatherAtCurrentLocation());
+
     }
 }
