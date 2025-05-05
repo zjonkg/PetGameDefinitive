@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 [RequireComponent(typeof(Collider))]
 public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     private Camera m_cam;
     private Vector3 initialPosition;
+    private Coroutine moveBackCoroutine;
+    public float returnSpeed = 5f; // Controla la velocidad de retorno
 
     void Start()
     {
@@ -13,7 +16,7 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
         if (m_cam.GetComponent<PhysicsRaycaster>() == null)
         {
-            m_cam.gameObject.AddComponent<PhysicsRaycaster>(); // Agrega un PhysicsRaycaster si no existe
+            m_cam.gameObject.AddComponent<PhysicsRaycaster>();
         }
 
         initialPosition = transform.position;
@@ -21,7 +24,13 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
     public void OnDrag(PointerEventData eventData)
     {
-        Ray R = m_cam.ScreenPointToRay(eventData.position); // Usar eventData.position en lugar de Input.mousePosition
+        if (moveBackCoroutine != null)
+        {
+            StopCoroutine(moveBackCoroutine); // Detener si se arrastra nuevamente
+            moveBackCoroutine = null;
+        }
+
+        Ray R = m_cam.ScreenPointToRay(eventData.position);
         Vector3 PO = transform.position;
         Vector3 PN = -m_cam.transform.forward;
         float t = Vector3.Dot(PO - R.origin, PN) / Vector3.Dot(R.direction, PN);
@@ -32,11 +41,26 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // Opcional: Cambiar color o efectos visuales
+        // Efectos visuales opcionales
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.position = initialPosition; // Restaurar posición inicial
+        moveBackCoroutine = StartCoroutine(SmoothReturn());
+    }
+
+    private IEnumerator SmoothReturn()
+    {
+        Vector3 start = transform.position;
+        float elapsed = 0f;
+
+        while (Vector3.Distance(transform.position, initialPosition) > 0.01f)
+        {
+            elapsed += Time.deltaTime * returnSpeed;
+            transform.position = Vector3.Lerp(start, initialPosition, elapsed);
+            yield return null;
+        }
+
+        transform.position = initialPosition;
     }
 }

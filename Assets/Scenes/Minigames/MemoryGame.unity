@@ -601,13 +601,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7941536598339515288, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071340062113733956, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8845124388917523759, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_Name
       value: Winning
       objectReference: {fileID: 0}
     - target: {fileID: 8845124388917523759, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8854985620527343892, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_AnchoredPosition.y

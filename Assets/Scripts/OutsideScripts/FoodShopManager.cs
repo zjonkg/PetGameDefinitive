@@ -21,15 +21,48 @@ public class FoodShopManager : MonoBehaviour
         // Tu JSON como cadena (puedes cargarlo desde archivo también)
         string json = @"
         [
-            {""name"": ""Cerdo"", ""price"": 3, ""imagePath"": ""Imgs/pig""},
-            {""name"": ""Águila"", ""price"": 5, ""imagePath"": ""Imgs/eagle""},
-            {""name"": ""Zombi"", ""price"": 7, ""imagePath"": ""Imgs/zombie""},
-            {""name"": ""Zombi"", ""price"": 7, ""imagePath"": ""Imgs/zombie""},
-            {""name"": ""Cerdo"", ""price"": 3, ""imagePath"": ""Imgs/pig""},
-            {""name"": ""Águila"", ""price"": 5, ""imagePath"": ""Imgs/eagle""},
-            {""name"": ""Zombi"", ""price"": 7, ""imagePath"": ""Imgs/zombie""},
-            {""name"": ""Zombi"", ""price"": 7, ""imagePath"": ""Imgs/zombie""}
-        ]";
+    {
+        ""name"": ""Cerdo"",
+        ""price"": 3,
+        ""imagePath"": ""Imgs/pig""
+    },
+    {
+        ""name"": ""Águila"",
+        ""price"": 5,
+        ""imagePath"": ""Imgs/eagle""
+    },
+    {
+        ""name"": ""Zombi"",
+        ""price"": 7,
+        ""imagePath"": ""Imgs/zombie""
+    },
+    {
+        ""name"": ""Zombi"",
+        ""price"": 7,
+        ""imagePath"": ""Imgs/zombie""
+    },
+    {
+        ""name"": ""Cerdo"",
+        ""price"": 3,
+        ""imagePath"": ""Imgs/pig""
+    },
+    {
+        ""name"": ""Águila"",
+        ""price"": 5,
+        ""imagePath"": ""Imgs/eagle""
+    },
+    {
+        ""name"": ""Zombi"",
+        ""price"": 7,
+        ""imagePath"": ""Imgs/zombie""
+    },
+    {
+        ""name"": ""Zombi"",
+        ""price"": 7,
+        ""imagePath"": ""Imgs/zombie""
+    }
+]
+";
 
         List<ItemData> items = JsonConvert.DeserializeObject<List<ItemData>>(json);
 

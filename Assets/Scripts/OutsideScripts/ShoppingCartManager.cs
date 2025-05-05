@@ -1,7 +1,5 @@
 using UnityEngine;
-
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 using TMPro;
@@ -21,6 +19,13 @@ public class ShoppingCartManager : MonoBehaviour
         public int quantity;
         public int price;
         public int totalPrice => quantity * price;
+    }
+
+    [System.Serializable]
+    public class CartPayload
+    {
+        public List<CartItem> items;
+        public int grandTotal;
     }
 
     void Awake()
@@ -85,7 +90,19 @@ public class ShoppingCartManager : MonoBehaviour
             return;
         }
 
-        string jsonToSend = JsonConvert.SerializeObject(cartItemsForSend, Formatting.Indented);
+        int grandTotal = 0;
+        foreach (var item in cartItemsForSend)
+        {
+            grandTotal += item.totalPrice;
+        }
+
+        CartPayload payload = new CartPayload
+        {
+            items = cartItemsForSend,
+            grandTotal = grandTotal
+        };
+
+        string jsonToSend = JsonConvert.SerializeObject(payload, Formatting.Indented);
         Debug.Log("Datos a enviar al servidor:\n" + jsonToSend);
 
         // Aquí puedes hacer una llamada HTTP POST a tu endpoint:

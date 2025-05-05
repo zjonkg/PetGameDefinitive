@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement; // Necesario para cargar escenas
+using UnityEngine.SceneManagement; 
 
 public class RadialIndicatorClick : MonoBehaviour
 {
     [Header("Radial Timer Settings")]
-    [SerializeField] private float fillDuration = 5.0f; // Tiempo en segundos para llenar
+    [SerializeField] private float fillDuration = 5.0f; 
     [SerializeField] private Image radialIndicator = null;
     [SerializeField] private UnityEvent onFillComplete = null;
 
     [Header("Scene Names")]
-    private string sceneIfPlayerIdExists = "Bathroom"; // Nombre de la escena si existe player_id
-    private string sceneIfPlayerIdMissing = "LoginScreen";   // Nombre de la escena si NO existe player_id
+    private string sceneIfPlayerIdExists = "Bathroom"; 
+    private string sceneIfPlayerIdMissing = "LoginScreen";   
 
     private float timer = 0f;
     private bool isFilling = true;
@@ -21,7 +21,7 @@ public class RadialIndicatorClick : MonoBehaviour
     {
         if (radialIndicator != null)
         {
-            radialIndicator.fillAmount = 0f; // Empieza vacío
+            radialIndicator.fillAmount = 0f; 
             radialIndicator.enabled = true;
         }
     }
@@ -46,12 +46,10 @@ public class RadialIndicatorClick : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("player_id") && !string.IsNullOrEmpty(PlayerPrefs.GetString("player_id")))
         {
-            // Si existe player_id, carga la escena correspondiente
             SceneManager.LoadScene(sceneIfPlayerIdExists);
         }
         else
         {
-            // Si NO existe player_id, carga otra escena
             SceneManager.LoadScene(sceneIfPlayerIdMissing);
         }
     }
