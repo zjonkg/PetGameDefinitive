@@ -5,25 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadingScreen.unity
     guid: e5cc8eb7c066bfd42a6f09c745e8e445
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/House.unity
     guid: e9e42015f99084b458e3b9730ceb3af5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoginScreen.unity
     guid: fc6e490dc247c834296bb0e40ee56299
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Bathroom.unity
     guid: 482e4231b2bfc5f42adedb3b426937e0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NotificationExample.unity
     guid: 8a92dbd954405334c804689e5beb9a07
   - enabled: 1
     path: Assets/Scenes/Kitchen.unity
     guid: 948d1b82f572e3645919837bccf8cd05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/QRScreen.unity
     guid: 1f29ee0dfac1cca4e9711ac6bead65f1
   - enabled: 0
