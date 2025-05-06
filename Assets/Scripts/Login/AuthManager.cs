@@ -47,8 +47,10 @@ public class AuthManager : MonoBehaviour
                 PlayerPrefs.Save();
 
                 if (response.has_mascot) {
-                    SceneManager.LoadScene("Hall");
+                    SceneManager.LoadScene("House");
+                    return;
                 }
+
 
                 SceneManager.LoadScene("QRScreen");
 

@@ -57,7 +57,6 @@ public class ItemShop : MonoBehaviour
         quantityText.text = selectedQuantity.ToString();
 
         // Cargar imagen o usar por defecto
-        Sprite sprite = Resources.Load<Sprite>(item.imagePath);
-        itemImage.sprite = sprite != null ? sprite : defaultSprite;
+        itemImage.sprite = defaultSprite;
     }
 }

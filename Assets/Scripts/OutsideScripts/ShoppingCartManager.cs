@@ -1,13 +1,15 @@
 using UnityEngine;
 
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 using TMPro;
+using System;
 
 public class ShoppingCartManager : MonoBehaviour
 {
+
+
     public TextMeshProUGUI totalText;
     public Button buyButton;
 
@@ -17,7 +19,7 @@ public class ShoppingCartManager : MonoBehaviour
     [System.Serializable]
     public class CartItem
     {
-        public string name;
+        public int id;
         public int quantity;
         public int price;
         public int totalPrice => quantity * price;
@@ -77,7 +79,7 @@ public class ShoppingCartManager : MonoBehaviour
             {
                 cartItemsForSend.Add(new CartItem()
                 {
-                    name = pair.Key.name,
+                    id = pair.Key.id,
                     quantity = pair.Value,
                     price = pair.Key.price
                 });
@@ -95,9 +97,9 @@ public class ShoppingCartManager : MonoBehaviour
 
         ShoppingCartPayload payload = new ShoppingCartPayload();
 
-        if (PlayerPrefs.HasKey("userId"))
+        if (PlayerPrefs.HasKey("player_id"))
         {
-            payload.user = PlayerPrefs.GetInt("userId");
+            payload.user = int.Parse(PlayerPrefs.GetString("player_id"));
         }
         else
         {
@@ -107,17 +109,34 @@ public class ShoppingCartManager : MonoBehaviour
 
         payload.item = cartItemsForSend;
 
-        // Calcular el total general
         payload.totalPrice = 0;
         foreach (var item in cartItemsForSend)
         {
             payload.totalPrice += item.totalPrice;
         }
 
-        string jsonToSend = JsonConvert.SerializeObject(payload, Formatting.Indented);
-        Debug.Log("Datos a enviar al servidor:\n" + jsonToSend);
+        Debug.Log("Datos a enviar al servidor:\n" + JsonConvert.SerializeObject(payload, Formatting.Indented));
 
-        // Opcional: Iniciar corrutina para enviar por HTTP
-        // StartCoroutine(SendCartToServer(jsonToSend));
+        SendCartToServer(payload);
     }
+
+    private void SendCartToServer(ShoppingCartPayload payload)
+    {
+        StartCoroutine(HttpService.Instance.SendRequest<string>(
+            "https://api-management-pet-production.up.railway.app/items/buy",
+            "PUT",
+            payload,
+            (response) =>
+            {
+                Debug.Log("Compra realizada con éxito. Respuesta: " + response);
+                return;
+            },
+            (error) =>
+            {
+                Debug.LogError("Error en la compra: " + error);
+            }
+        ));
+    }
+
+
 }
