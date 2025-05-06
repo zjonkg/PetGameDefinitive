@@ -2,70 +2,44 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using Newtonsoft.Json;
+using static System.Net.WebRequestMethods;
 
 [System.Serializable]
 public class ItemData
 {
+    public int id;
     public string name;
+    public string description;
     public int price;
-    public string imagePath;
 }
+
+
+[System.Serializable]
+public class ItemListResponse
+{
+    public List<ItemData> items;
+}
+
 
 public class FoodShopManager : MonoBehaviour
 {
-    public GameObject itemShopPrefab; // Arrastra tu prefab aquí
-    public Transform itemsParent;     // Contenedor donde se generarán los ítems
+    public GameObject itemShopPrefab;
+    public Transform itemsParent;
+    private string apiUrl = "https://api-management-pet-production.up.railway.app/items/";
 
     void Start()
     {
-        // Tu JSON como cadena (puedes cargarlo desde archivo también)
-        string json = @"
-        [
-    {
-        ""name"": ""Cerdo"",
-        ""price"": 3,
-        ""imagePath"": ""Imgs/pig""
-    },
-    {
-        ""name"": ""Águila"",
-        ""price"": 5,
-        ""imagePath"": ""Imgs/eagle""
-    },
-    {
-        ""name"": ""Zombi"",
-        ""price"": 7,
-        ""imagePath"": ""Imgs/zombie""
-    },
-    {
-        ""name"": ""Zombi"",
-        ""price"": 7,
-        ""imagePath"": ""Imgs/zombie""
-    },
-    {
-        ""name"": ""Cerdo"",
-        ""price"": 3,
-        ""imagePath"": ""Imgs/pig""
-    },
-    {
-        ""name"": ""Águila"",
-        ""price"": 5,
-        ""imagePath"": ""Imgs/eagle""
-    },
-    {
-        ""name"": ""Zombi"",
-        ""price"": 7,
-        ""imagePath"": ""Imgs/zombie""
-    },
-    {
-        ""name"": ""Zombi"",
-        ""price"": 7,
-        ""imagePath"": ""Imgs/zombie""
+        StartCoroutine(HttpService.Instance.SendRequest<List<ItemData>>(
+            apiUrl,
+            "GET",
+            null,
+            OnItemsReceived,
+            OnRequestError
+        ));
     }
-]
-";
 
-        List<ItemData> items = JsonConvert.DeserializeObject<List<ItemData>>(json);
-
+    void OnItemsReceived(List<ItemData> items)
+    {
         foreach (var item in items)
         {
             GameObject go = Instantiate(itemShopPrefab, itemsParent);
@@ -75,5 +49,10 @@ public class FoodShopManager : MonoBehaviour
                 component.Initialize(item);
             }
         }
+    }
+
+    void OnRequestError(string error)
+    {
+        Debug.LogError("Error al obtener los ítems: " + error);
     }
 }
