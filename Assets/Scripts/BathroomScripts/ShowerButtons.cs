@@ -7,9 +7,9 @@ public class ShowerButtons : MonoBehaviour
     Animator animator;
 
     
-    public PetManager petManager;
-    public GameObject showerUI;
-    public Animator petAnim;
+    [SerializeField] private PetManager petManager;
+    [SerializeField] private GameObject showerUI;
+    [SerializeField] private Animator petAnim;
 
 
     private void Start()
@@ -17,15 +17,14 @@ public class ShowerButtons : MonoBehaviour
 
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            petManager.changeState(new ShowerStmt(showerUI, petAnim, this, petManager));
+            petManager.changeState(petManager.GetShowerState());
         });
     }
 
     public void OnDropiePress()
     {
-        petManager.changeState(new ShowerStmt(showerUI, petAnim, this, petManager));
+        petManager.changeState(new ShowerStmt(showerUI, petAnim, petManager, this));
         Debug.Log("Boton funcionando");
     }
-
 
 }
