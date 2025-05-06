@@ -6,42 +6,54 @@ public class ShowerStmt : IPetStatement
     private GameObject showerUI;
 
     Animator animator;
-    private MonoBehaviour mono; // para usar Coroutine
-    
+    private MonoBehaviour mono; // Coroutine!! 
+
     public GameObject player;
     PetManager petManager;
 
-    public ShowerStmt(GameObject showerUI, Animator animator, MonoBehaviour mono, PetManager petManager)
+    public ShowerStmt(GameObject showerUI, Animator animator, PetManager petManager, MonoBehaviour mono)
     {
         this.showerUI = showerUI;
         this.animator = animator;
         this.mono = mono;
-        
+        this.petManager = petManager;
+
     }
 
     public void EnterState()
     {
         Debug.Log("Entrando al estado Shower");
-        showerUI.SetActive(true);
         animator.Play("walkingtest");
-       
+        showerUI.SetActive(false);
+        mono.StartCoroutine(PlayShowerThenIdle()); // Start the coroutine to play shower animation
+
     }
 
     public void ExitState()
     {
+        animator.Play("showertoidle");
         Debug.Log("Saliendo del estado Shower");
-        showerUI.SetActive(false);
+        showerUI.SetActive(true);
     }
 
     public void UpdateState()
     {
-        //
+        
     }
 
-    private IEnumerator VolverAIdle()
+    private IEnumerator backToIdle()
     {
-        yield return new WaitForSeconds(5f); // duración de la animación
-        petManager.changeState(new iddleStmt());
+        yield return new WaitForSeconds(6f); // duración de la animación
+        petManager.changeState(petManager.GetIdleState());
+    }
+
+    private IEnumerator PlayShowerThenIdle()
+    {
+        yield return new WaitForSeconds(4.5f); // Segunda Etapa
+        animator.Play("showertoidle");
+
+        yield return new WaitForSeconds(1.5f); 
+        petManager.changeState(petManager.GetIdleState());
     }
 
 }
