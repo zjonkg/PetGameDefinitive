@@ -8,7 +8,7 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
     private Camera m_cam;
     private Vector3 initialPosition;
     private Coroutine moveBackCoroutine;
-    public float returnSpeed = 5f; // Controla la velocidad de retorno
+    public float returnSpeed = 5f;
 
     void Start()
     {
@@ -19,14 +19,14 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
             m_cam.gameObject.AddComponent<PhysicsRaycaster>();
         }
 
-        initialPosition = transform.position;
+        initialPosition = transform.localPosition; // <--- CAMBIO AQUÍ
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (moveBackCoroutine != null)
         {
-            StopCoroutine(moveBackCoroutine); // Detener si se arrastra nuevamente
+            StopCoroutine(moveBackCoroutine);
             moveBackCoroutine = null;
         }
 
@@ -41,14 +41,10 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
     public void setInitialPosition(Vector3 newPosition)
     {
-        initialPosition = newPosition;
+        initialPosition = newPosition; 
     }
 
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        // Efectos visuales opcionales
-    }
+    public void OnBeginDrag(PointerEventData eventData) { }
 
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -57,10 +53,9 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
     private IEnumerator SmoothReturn()
     {
-        Vector3 start = transform.localPosition;  // Usamos localPosition para estar seguros de que no afecta la global
+        Vector3 start = transform.localPosition;
         float elapsed = 0f;
 
-        // Aseguramos que el movimiento no se sobrescriba después de la animación
         while (Vector3.Distance(transform.localPosition, initialPosition) > 0.01f)
         {
             elapsed += Time.deltaTime * returnSpeed;
@@ -68,8 +63,6 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
             yield return null;
         }
 
-        transform.localPosition = initialPosition;  // Regresamos exactamente a la posición inicial
+        transform.localPosition = initialPosition;
     }
-
-
 }

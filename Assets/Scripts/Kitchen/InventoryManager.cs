@@ -42,39 +42,37 @@ public class Inventory3DCarousel : MonoBehaviour
         Vector3 targetPosition = new Vector3(-1.31f, -0.613f, -1.872f);
         Vector3 startOffset = new Vector3(direction > 0 ? 5f : -5f, targetPosition.y, targetPosition.z);
 
-        // Si ya tenemos un modelo actual
         if (currentModel != null)
         {
             GameObject oldModel = currentModel;
 
-            // Guardamos la posición inicial local antes de la animación
             MakeA3DObjectDraggable oldDraggableScript = oldModel.GetComponent<MakeA3DObjectDraggable>();
             if (oldDraggableScript != null)
             {
-                oldDraggableScript.setInitialPosition(oldModel.transform.localPosition);  // Guardamos la posición local
+                oldDraggableScript.setInitialPosition(oldModel.transform.localPosition);  
             }
 
-            // Animamos el viejo modelo fuera del área
+ 
             oldModel.transform.DOLocalMoveX(direction > 0 ? -5f : 5f, 0.3f)
                 .SetEase(Ease.InBack)
                 .OnComplete(() =>
                 {
-                    // Destruimos el viejo modelo
+
                     Destroy(oldModel);
 
-                    // Instanciamos el nuevo modelo en la posición inicial
+
                     GameObject newModel = Instantiate(newItem.itemPrefab, modelHolder);
                     newModel.transform.localPosition = startOffset;
 
-                    // Animamos el nuevo modelo hacia la posición de destino
+
                     newModel.transform.DOLocalMove(targetPosition, 0.3f).SetEase(Ease.OutBack)
                         .OnComplete(() =>
                         {
-                            // Guardamos la posición inicial local del nuevo modelo
+
                             MakeA3DObjectDraggable newDraggableScript = newModel.GetComponent<MakeA3DObjectDraggable>();
                             if (newDraggableScript != null)
                             {
-                                newDraggableScript.setInitialPosition(newModel.transform.localPosition);  // Guardamos la posición inicial local correctamente
+                                newDraggableScript.setInitialPosition(newModel.transform.localPosition); 
                             }
                         });
 
@@ -83,15 +81,15 @@ public class Inventory3DCarousel : MonoBehaviour
         }
         else
         {
-            // Si no hay modelo actual, simplemente instanciamos el nuevo
+
             currentModel = Instantiate(newItem.itemPrefab, modelHolder);
             currentModel.transform.localPosition = targetPosition;
 
-            // Guardamos la posición inicial local al crear el modelo
+
             MakeA3DObjectDraggable draggableScript = currentModel.GetComponent<MakeA3DObjectDraggable>();
             if (draggableScript != null)
             {
-                draggableScript.setInitialPosition(currentModel.transform.localPosition);  // Aseguramos que se guarde la posición local
+                draggableScript.setInitialPosition(currentModel.transform.localPosition);  
             }
         }
     }
@@ -102,16 +100,16 @@ public class Inventory3DCarousel : MonoBehaviour
     {
         currentModel = Instantiate(item.itemPrefab, modelHolder);
 
-        // Posición inicial que no está afectada por la animación
-        currentModel.transform.localPosition = new Vector3(-1.31f, -0.613f, -1.872f);  // Posición inicial predeterminada
+        Vector3 localPos = new Vector3(-1.31f, -0.613f, -1.872f);
+        currentModel.transform.localPosition = localPos;
 
-        // Aseguramos que se guarde correctamente la posición inicial local
         MakeA3DObjectDraggable draggableScript = currentModel.GetComponent<MakeA3DObjectDraggable>();
         if (draggableScript != null)
         {
-            draggableScript.setInitialPosition(currentModel.transform.localPosition);  // Usamos localPosition para asegurar que se guarde en el espacio local
+            draggableScript.setInitialPosition(localPos); 
         }
     }
+
 
 
 }
