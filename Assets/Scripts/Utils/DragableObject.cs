@@ -39,6 +39,12 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
         transform.position = P;
     }
 
+    public void setInitialPosition(Vector3 newPosition)
+    {
+        initialPosition = newPosition;
+    }
+
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         // Efectos visuales opcionales
@@ -51,16 +57,19 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
     private IEnumerator SmoothReturn()
     {
-        Vector3 start = transform.position;
+        Vector3 start = transform.localPosition;  // Usamos localPosition para estar seguros de que no afecta la global
         float elapsed = 0f;
 
-        while (Vector3.Distance(transform.position, initialPosition) > 0.01f)
+        // Aseguramos que el movimiento no se sobrescriba después de la animación
+        while (Vector3.Distance(transform.localPosition, initialPosition) > 0.01f)
         {
             elapsed += Time.deltaTime * returnSpeed;
-            transform.position = Vector3.Lerp(start, initialPosition, elapsed);
+            transform.localPosition = Vector3.Lerp(start, initialPosition, elapsed);
             yield return null;
         }
 
-        transform.position = initialPosition;
+        transform.localPosition = initialPosition;  // Regresamos exactamente a la posición inicial
     }
+
+
 }
