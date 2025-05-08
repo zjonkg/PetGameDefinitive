@@ -145,11 +145,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 56384274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8246e47f80edde34c9a5a32c6a1dd8e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3181ed47f1ad8dd4a9c9064fb6a26515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 1202403324}
-  volumeTextUI: {fileID: 0}
 --- !u!4 &56384276
 Transform:
   m_ObjectHideFlags: 0
@@ -946,7 +945,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 554}
-  m_SizeDelta: {x: 1088.9277, y: 190.2057}
+  m_SizeDelta: {x: 1100, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1122364756
 MonoBehaviour:
@@ -1252,7 +1251,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 817.86456, y: 540.74084}
+  m_AnchoredPosition: {x: 801.86, y: 549}
   m_SizeDelta: {x: 550, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202403324
@@ -1345,8 +1344,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bf03152b503f017449b1de3fa148a269, type: 3}
-  m_Resource: {fileID: 8300000, guid: bf03152b503f017449b1de3fa148a269, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4a56043897c00314092cd3fd0810eac5, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4a56043897c00314092cd3fd0810eac5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1629,8 +1628,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 976, y: 1414}
-  m_SizeDelta: {x: 640, y: 120}
+  m_AnchoredPosition: {x: 960, y: 1449}
+  m_SizeDelta: {x: 640, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146955557
 MonoBehaviour:
