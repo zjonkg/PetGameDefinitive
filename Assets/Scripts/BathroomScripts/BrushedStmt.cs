@@ -8,7 +8,7 @@ public class BrushedStmt : IPetStatement
     private MonoBehaviour mono; // Coroutine!! 
     PetManager petManager;
 
-    public BrushedStmt(GameObject showerUI, Animator animator, PetManager petManager, MonoBehaviour mono)
+    public BrushedStmt(GameObject showerUI, Animator animator, PetManager petManager, MonoBehaviour mono, Animator petAnim)
     {
         this.showerUI = showerUI;
         this.animator = animator;
