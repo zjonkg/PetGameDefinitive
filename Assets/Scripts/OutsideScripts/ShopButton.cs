@@ -1,24 +1,15 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    Animator animator;
+    [SerializeField] private GameObject shopContainer; 
 
-
-    private void Start()
+    public void ToggleShop()
     {
-
-        GetComponent<Button>().onClick.AddListener(() =>
+        if (shopContainer != null)
         {
-            OnDropiePress();
-        });
+            shopContainer.SetActive(!shopContainer.activeSelf);
+            Debug.Log("Tienda " + (shopContainer.activeSelf ? "abierta" : "cerrada"));
+        }
     }
-    public void OnDropiePress()
-    {
-        Debug.Log("Boton funcionando");
-    }
-
-
 }

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class VolumeSaveController : MonoBehaviour
@@ -11,18 +8,24 @@ public class VolumeSaveController : MonoBehaviour
     private void Start()
     {
         LoadValues();
+        volumeSlider.onValueChanged.AddListener(OnVolumeChanged); 
     }
 
-    public void SaveVolumeButton()
+    private void OnDestroy()
     {
-        float volumeValue = volumeSlider.value;
-        PlayerPrefs.SetFloat("VolumeValue", volumeValue);
-        LoadValues();
+        volumeSlider.onValueChanged.RemoveListener(OnVolumeChanged); 
     }
 
-    void LoadValues()
+    private void OnVolumeChanged(float value)
     {
-        float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
+        AudioListener.volume = value;
+        PlayerPrefs.SetFloat("VolumeValue", value);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadValues()
+    {
+        float volumeValue = PlayerPrefs.GetFloat("VolumeValue", 1f);
         volumeSlider.value = volumeValue;
         AudioListener.volume = volumeValue;
     }
