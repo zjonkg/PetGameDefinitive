@@ -122,13 +122,13 @@ public class ShoppingCartManager : MonoBehaviour
 
     private void SendCartToServer(ShoppingCartPayload payload)
     {
-        StartCoroutine(HttpService.Instance.SendRequest<string>(
+        StartCoroutine(HttpService.Instance.SendRequest<CartResponse>(
             "https://api-management-pet-production.up.railway.app/items/buy",
             "PUT",
             payload,
             (response) =>
             {
-                Debug.Log("Compra realizada con éxito. Respuesta: " + response);
+                Debug.Log("Compra realizada con éxito. Respuesta: " + response.message);
                 return;
             },
             (error) =>
@@ -136,6 +136,11 @@ public class ShoppingCartManager : MonoBehaviour
                 Debug.LogError("Error en la compra: " + error);
             }
         ));
+    }
+
+    public class CartResponse
+    {
+        public string message;
     }
 
 

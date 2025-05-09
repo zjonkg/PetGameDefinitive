@@ -6,6 +6,8 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI; // Asegúrate de usar esto si vas a mostrar el tiempo en pantalla
 using ShyLaura.Database;
+using Newtonsoft.Json;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class MemoryGameManagerUI : MinigamesBase
 {
@@ -13,7 +15,8 @@ public class MemoryGameManagerUI : MinigamesBase
     public GameObject winPanel;
     [SerializeField] private CardGroup cardGroup;
     [SerializeField] private List<CardSingleUI> cardSingleUIList = new List<CardSingleUI>();
-    [SerializeField] private TextMeshProUGUI timerText; 
+    [SerializeField] private TextMeshProUGUI timerText;
+    public string apiUrl = "'https://api-management-pet-production.up.railway.app/play/";
 
     private float timeRemaining = 0f;
     private bool timerRunning = false;
@@ -112,24 +115,57 @@ public class MemoryGameManagerUI : MinigamesBase
 
         Debug.Log("Has ganado");
 
-        using (var scoreDb = new ScoreMatch())
+        string playerId = PlayerPrefs.GetString("player_id", "default_id");
+        string matchId = "1";
+        int score = CalculateScore();
+        int coinGained = Mathf.FloorToInt(timeRemaining);
+
+        PlayerGameData data = new PlayerGameData
         {
-            string playerId = PlayerPrefs.GetString("player_id", "default_id");
-            string matchId = System.Guid.NewGuid().ToString(); // ID único por partida
-            int score = CalculateScore(); // Implementa tu lógica
-            int coinGained = Mathf.FloorToInt(timeRemaining); // O lo que represente las monedas
+            id = playerId,
+            id_minigames = matchId,
+            score = score,
+            moneyGained = coinGained
+        };
+
+        string jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+
+        HttpService.Instance.SendRequest<ResponseGameData>(
+            apiUrl,
+            "POST",
+            jsonData,
+            (response) =>
+            {
+                Debug.Log(response.message);
+            },
+            (error) =>
+            {
+                Debug.Log(error);
+                Debug.Log("Datos guardados en la DB.");
+            });
+
+
+       /* using (var scoreDb = new ScoreMatch())
+        {
 
             scoreDb.insertData(playerId, matchId, score, coinGained);
-            Debug.Log("Datos guardados en la DB.");
-        }
 
-        winPanel.SetActive(true);
+
+
+        );
+
+
+            winPanel.SetActive(true);
+        }
+       */
     }
+
+    
+
 
 
     private int CalculateScore()
     {
-        // Lógica personalizada, aquí solo un ejemplo simple
         int baseScore = 1000;
         int bonus = Mathf.FloorToInt(timeRemaining * 10);
         return baseScore + bonus;
