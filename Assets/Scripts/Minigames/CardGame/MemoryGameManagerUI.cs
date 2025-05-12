@@ -107,6 +107,13 @@ public class MemoryGameManagerUI : MinigamesBase
         }
     }
 
+    private int CalculateCoins()
+    {
+        float difficultyMultiplier = GetDifficultyMultiplier(CardGridUI.CurrentDifficulty);
+        return Mathf.FloorToInt(timeRemaining * difficultyMultiplier);
+    }
+
+
     private IEnumerator OnCompleteGame()
     {
         timerRunning = false;
@@ -118,7 +125,7 @@ public class MemoryGameManagerUI : MinigamesBase
         string playerId = PlayerPrefs.GetString("player_id", "default_id");
         string matchId = "1";
         int score = CalculateScore();
-        int coinGained = Mathf.FloorToInt(timeRemaining);
+        int coinGained = CalculateCoins();
 
         PlayerGameData data = new PlayerGameData
         {
@@ -160,16 +167,20 @@ public class MemoryGameManagerUI : MinigamesBase
        */
     }
 
-    
+
 
 
 
     private int CalculateScore()
     {
-        int baseScore = 1000;
-        int bonus = Mathf.FloorToInt(timeRemaining * 10);
-        return baseScore + bonus;
+        int baseScore = 500; // Base fija para completar el juego
+        int timeBonus = Mathf.FloorToInt(timeRemaining * 10); // 10 puntos por segundo restante
+        float difficultyMultiplier = GetDifficultyMultiplier(CardGridUI.CurrentDifficulty);
+
+        int totalScore = Mathf.FloorToInt((baseScore + timeBonus) * difficultyMultiplier);
+        return totalScore;
     }
+
 
 
     public void Restart()
@@ -195,6 +206,25 @@ public class MemoryGameManagerUI : MinigamesBase
         timerText.transform.localScale = Vector3.one;
         timerText.color = Color.white;
     }
+
+    private float GetDifficultyMultiplier(DifficultyEnum difficulty)
+    {
+        switch (difficulty)
+        {
+            case DifficultyEnum.Easy:
+                return 1.0f;
+            case DifficultyEnum.Normal:
+                return 1.5f;
+            case DifficultyEnum.Hard:
+                return 2.0f;
+            default:
+                return 1.0f;
+        }
+    }
+
+
+   
+
 
 
 
