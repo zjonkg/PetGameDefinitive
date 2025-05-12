@@ -11,7 +11,7 @@ public class RadialIndicatorClick : MonoBehaviour
     [SerializeField] private UnityEvent onFillComplete = null;
 
     [Header("Scene Names")]
-    private string sceneIfPlayerIdExists = "Bathroom"; 
+    private string sceneIfPlayerIdExists = "House"; 
     private string sceneIfPlayerIdMissing = "LoginScreen";   
 
     private float timer = 0f;

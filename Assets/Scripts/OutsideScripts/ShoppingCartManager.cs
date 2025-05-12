@@ -19,7 +19,7 @@ public class ShoppingCartManager : MonoBehaviour
     [System.Serializable]
     public class CartItem
     {
-        public int id;
+        public int id_item;
         public int quantity;
         public int price;
         public int totalPrice => quantity * price;
@@ -28,7 +28,7 @@ public class ShoppingCartManager : MonoBehaviour
     [System.Serializable]
     public class ShoppingCartPayload
     {
-        public int user;
+        public int id_user;
         public List<CartItem> item = new List<CartItem>();
         public int totalPrice; // Nuevo campo
     }
@@ -79,7 +79,7 @@ public class ShoppingCartManager : MonoBehaviour
             {
                 cartItemsForSend.Add(new CartItem()
                 {
-                    id = pair.Key.id,
+                    id_item = pair.Key.id,
                     quantity = pair.Value,
                     price = pair.Key.price
                 });
@@ -99,7 +99,7 @@ public class ShoppingCartManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("player_id"))
         {
-            payload.user = int.Parse(PlayerPrefs.GetString("player_id"));
+            payload.id_user = int.Parse(PlayerPrefs.GetString("player_id"));
         }
         else
         {

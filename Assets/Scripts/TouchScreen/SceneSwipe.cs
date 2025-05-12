@@ -89,14 +89,18 @@ public class SceneSwipe : MonoBehaviour
     string GetNextScene()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "House") return "Bathroom";
+        if (currentScene == "House") return "Hall2";
+        if (currentScene == "Hall2") return "Bathroom";
+        if(currentScene == "Bathroom") return "Kitchen";
         return "";
     }
 
     string GetPreviousScene()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "Bathroom") return "House";
+        if (currentScene == "Kitchen") return "Bathroom";
+        if (currentScene == "Bathroom") return "Hall2";
+        if (currentScene == "Hall2") return "House";
         return "";
     }
 

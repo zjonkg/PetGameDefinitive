@@ -44,7 +44,10 @@ public class Inventory3DCarousel : MonoBehaviour
                         FoodData instance = ScriptableObject.Instantiate(itemData);
                         instance.quantity = userItem.quantity;
 
-                        ownedItems.Add(instance);
+                        if (userItem.quantity > 0) {
+                            ownedItems.Add(instance);
+                        }
+                    
                     }
                 }
 
