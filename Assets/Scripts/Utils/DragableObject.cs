@@ -10,6 +10,13 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
     private Coroutine moveBackCoroutine;
     public float returnSpeed = 5f;
 
+    private Inventory3DCarousel carousel;
+
+    public void SetCarousel(Inventory3DCarousel refCarousel)
+    {
+        carousel = refCarousel;
+    }
+
     void Start()
     {
         m_cam = Camera.main;
@@ -19,7 +26,7 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
             m_cam.gameObject.AddComponent<PhysicsRaycaster>();
         }
 
-        initialPosition = transform.localPosition; // <--- CAMBIO AQUÍ
+        initialPosition = transform.localPosition; 
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -48,6 +55,7 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        CheckPositionAndAct();
         moveBackCoroutine = StartCoroutine(SmoothReturn());
     }
 
@@ -65,4 +73,20 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
         transform.localPosition = initialPosition;
     }
+
+
+    void CheckPositionAndAct()
+    {
+        Vector3 pos = transform.position;
+
+        bool isInXRange = pos.x >= -0.90f && pos.x <= -0.30f;
+        bool isInYRange = pos.y >= 1.5f && pos.y <= 2.5f;
+
+        if (isInXRange && isInYRange)
+        {
+            Debug.Log("¡Está dentro del área objetivo!");
+            carousel.EatCurrentItem();
+        }
+    }
+
 }
