@@ -6,6 +6,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI; // Asegúrate de usar esto si vas a mostrar el tiempo en pantalla
 using ShyLaura.Database;
+using UnityEngine.Networking;
 
 public class MemoryGameManagerUI : MinigamesBase
 {
@@ -112,6 +113,14 @@ public class MemoryGameManagerUI : MinigamesBase
 
         Debug.Log("Has ganado");
 
+        int userId = PlayerPrefs.GetInt("user_id", 0); // ID del usuario
+        int matchid = System.Guid.NewGuid().GetHashCode(); // ID único por partida
+        int scoreMatch = CalculateScore(); // Implementa tu lógica
+        int coinMatch = Mathf.FloorToInt(timeRemaining); // O lo que represente las monedas
+
+
+        PostGameScore(userId, matchid, scoreMatch, coinMatch);
+
         using (var scoreDb = new ScoreMatch())
         {
             string playerId = PlayerPrefs.GetString("player_id", "default_id");
@@ -181,6 +190,54 @@ public class MemoryGameManagerUI : MinigamesBase
             Debug.Log("Tiempo agotado");
             StopTimerAnimation();
             // Aquí puedes poner lógica para cuando se acabe el tiempo (perder, reiniciar, etc.)
+        }
+    }
+
+    public class GameScoreData
+    {
+        public int id_user;
+        public int id_minigame;
+        public int score;
+        public int money_earned;
+    }
+
+    private IEnumerator PostGameScore(int userId, int minigameId, int score, int moneyEarned)
+    {
+        string url = "http://127.0.0.1:8000/play"; // Reemplaza con tu URL
+
+        // Crear el objeto de datos
+        GameScoreData scoreData = new GameScoreData
+        {
+            id_user = userId,
+            id_minigame = minigameId,
+            score = score,
+            money_earned = moneyEarned
+        };
+
+        // Convertir a JSON
+        string jsonData = JsonUtility.ToJson(scoreData);
+        Debug.Log("Enviando JSON: " + jsonData);
+
+        // Configurar la solicitud
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        // Enviar la solicitud y esperar respuesta
+        yield return request.SendWebRequest();
+
+        // Manejar la respuesta
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Respuesta del servidor: " + request.downloadHandler.text);
+            // Aquí puedes procesar la respuesta si es necesario
+        }
+        else
+        {
+            Debug.LogError("Error al enviar datos: " + request.error);
+            Debug.LogError("Respuesta del servidor: " + request.downloadHandler.text);
         }
     }
 }
