@@ -25,7 +25,7 @@ public class ShowerStmt : IPetStatement
     {
         Debug.Log("Entrando al estado Shower");
         animator.Play("walkingtest");
-        showerUI.SetActive(false);
+        
         mono.StartCoroutine(PlayShowerThenIdle()); // Start the coroutine to play shower animation
 
     }
@@ -50,9 +50,11 @@ public class ShowerStmt : IPetStatement
 
     private IEnumerator PlayShowerThenIdle()
     {
+        yield return new WaitForSeconds(1f);
+        showerUI.SetActive(false);// Espera antes de iniciar la animación
         yield return new WaitForSeconds(4.5f); // Segunda Etapa
-        animator.Play("showertoidle");
-
+        
+        animator.Play("showertoidle");  
         yield return new WaitForSeconds(1.5f); 
         petManager.changeState(petManager.GetIdleState());
     }

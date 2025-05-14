@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Bubble Particles/Textures/Sources/Bubbles.ai.meta
 guid: 44dbc8d1dd7f24ada90a9e09c39b0119
+========
+guid: 6dded05a1f2360c4594e890c4d6167d0
+>>>>>>>> 98de0f5f25ffd0951ad2cfa1834f3f82b5bbd74a:Assets/Models/Charming Kitchen/gltf/blinds_kitchen.bin.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
