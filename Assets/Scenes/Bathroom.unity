@@ -2182,8 +2182,6 @@ MonoBehaviour:
   petManager: {fileID: 646647026}
   petAnim: {fileID: 960557326933361920}
   brushAnim: {fileID: 506710565}
-<<<<<<< HEAD
-=======
 --- !u!1 &697723228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,7 +2310,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697723228}
   m_CullTransparentMesh: 0
->>>>>>> 98de0f5f25ffd0951ad2cfa1834f3f82b5bbd74a
 --- !u!1001 &784823750
 PrefabInstance:
   m_ObjectHideFlags: 0
