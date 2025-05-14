@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fondo-abstracto-con-textura_0: 7506795491802717845
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

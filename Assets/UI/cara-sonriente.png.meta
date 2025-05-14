@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cara-sonriente_0: -600840519851056016
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
