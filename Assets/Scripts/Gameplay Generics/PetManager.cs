@@ -14,9 +14,15 @@ public class PetManager : MonoBehaviour
 
     private void Awake()
     {
+        
         showerStmt = new ShowerStmt(gameplayUI, petAnim, petManager, this);
         idleStmt = new iddleStmt(gameplayUI, petAnim, petManager, this);
-        brushedStmt = new BrushedStmt(gameplayUI, brushAnim, petManager, this);
+        brushedStmt = new BrushedStmt(gameplayUI, brushAnim, petManager, this, petAnim);
+    }
+
+    private void Start()
+    {
+        changeState(idleStmt); // Set the initial state to idle
     }
 
     private IPetStatement currentStatement;
@@ -37,7 +43,6 @@ public class PetManager : MonoBehaviour
     //Getting statements! 
     public ShowerStmt GetShowerState() => showerStmt;
     public iddleStmt GetIdleState() => idleStmt;
-
     public BrushedStmt GetBrushedState() => brushedStmt;
 
     void Update()
@@ -48,12 +53,10 @@ public class PetManager : MonoBehaviour
         }
     }
 
-    
-
-    public void GoToShower()
+    //Getting Current Statement!! 
+    public IPetStatement GetCurrentState()
     {
-        changeState(showerStmt);
+        return currentStatement;
     }
 
-    
 }
