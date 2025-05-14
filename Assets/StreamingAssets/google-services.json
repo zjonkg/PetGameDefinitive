@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "219337120997",
+    "project_id": "shylaura-d274f",
+    "storage_bucket": "shylaura-d274f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219337120997:android:298b9800bd4f78e956080c",
+        "android_client_info": {
+          "package_name": "com.Tilin.AikoFriends"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMz-AErQgqMpDGe2tWqatRec6Xsy34Occ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,7 +4,7 @@ using System.Collections;
 
 public class SceneSwipe : MonoBehaviour
 {
-    public float swipeThreshold = 50f;
+    public float swipeThreshold = 1000f;
     public CanvasGroup fadePanel;
     private Vector2 startTouchPosition;
     private bool isTransitioning = false;
@@ -13,6 +13,8 @@ public class SceneSwipe : MonoBehaviour
 
     void Awake()
     {
+
+        swipeThreshold = Screen.width * 0.25f; 
         // Singleton para evitar duplicados
         if (instance == null)
         {
@@ -55,10 +57,12 @@ public class SceneSwipe : MonoBehaviour
             }
             else if (touch.phase == TouchPhase.Ended)
             {
-                float deltaX = touch.position.x - startTouchPosition.x;
-                if (Mathf.Abs(deltaX) > swipeThreshold)
+                Vector2 endTouchPosition = touch.position;
+                Vector2 swipeDelta = endTouchPosition - startTouchPosition;
+
+                if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y) && Mathf.Abs(swipeDelta.x) > swipeThreshold)
                 {
-                    if (deltaX > 0)
+                    if (swipeDelta.x > 0)
                         LoadPreviousScene();
                     else
                         LoadNextScene();
@@ -66,6 +70,7 @@ public class SceneSwipe : MonoBehaviour
             }
         }
     }
+
 
     void LoadNextScene()
     {
@@ -84,14 +89,18 @@ public class SceneSwipe : MonoBehaviour
     string GetNextScene()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "House") return "Bathroom";
+        if (currentScene == "House") return "Hall2";
+        if (currentScene == "Hall2") return "Bathroom";
+        if(currentScene == "Bathroom") return "Kitchen";
         return "";
     }
 
     string GetPreviousScene()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene == "Bathroom") return "House";
+        if (currentScene == "Kitchen") return "Bathroom";
+        if (currentScene == "Bathroom") return "Hall2";
+        if (currentScene == "Hall2") return "House";
         return "";
     }
 

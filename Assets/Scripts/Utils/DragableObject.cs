@@ -8,7 +8,14 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
     private Camera m_cam;
     private Vector3 initialPosition;
     private Coroutine moveBackCoroutine;
-    public float returnSpeed = 5f; // Controla la velocidad de retorno
+    public float returnSpeed = 5f;
+
+    private Inventory3DCarousel carousel;
+
+    public void SetCarousel(Inventory3DCarousel refCarousel)
+    {
+        carousel = refCarousel;
+    }
 
     void Start()
     {
@@ -19,14 +26,14 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
             m_cam.gameObject.AddComponent<PhysicsRaycaster>();
         }
 
-        initialPosition = transform.position;
+        initialPosition = transform.localPosition; 
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (moveBackCoroutine != null)
         {
-            StopCoroutine(moveBackCoroutine); // Detener si se arrastra nuevamente
+            StopCoroutine(moveBackCoroutine);
             moveBackCoroutine = null;
         }
 
@@ -39,28 +46,47 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
         transform.position = P;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void setInitialPosition(Vector3 newPosition)
     {
-        // Efectos visuales opcionales
+        initialPosition = newPosition; 
     }
+
+    public void OnBeginDrag(PointerEventData eventData) { }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        CheckPositionAndAct();
         moveBackCoroutine = StartCoroutine(SmoothReturn());
     }
 
     private IEnumerator SmoothReturn()
     {
-        Vector3 start = transform.position;
+        Vector3 start = transform.localPosition;
         float elapsed = 0f;
 
-        while (Vector3.Distance(transform.position, initialPosition) > 0.01f)
+        while (Vector3.Distance(transform.localPosition, initialPosition) > 0.01f)
         {
             elapsed += Time.deltaTime * returnSpeed;
-            transform.position = Vector3.Lerp(start, initialPosition, elapsed);
+            transform.localPosition = Vector3.Lerp(start, initialPosition, elapsed);
             yield return null;
         }
 
-        transform.position = initialPosition;
+        transform.localPosition = initialPosition;
     }
+
+
+    void CheckPositionAndAct()
+    {
+        Vector3 pos = transform.position;
+
+        bool isInXRange = pos.x >= -0.90f && pos.x <= -0.30f;
+        bool isInYRange = pos.y >= 1.5f && pos.y <= 2.5f;
+
+        if (isInXRange && isInYRange)
+        {
+            Debug.Log("¡Está dentro del área objetivo!");
+            carousel.EatCurrentItem();
+        }
+    }
+
 }
