@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: food_muffin
       objectReference: {fileID: 0}
+    - target: {fileID: 2958611766472078436, guid: 70b9b71b218acdb47892b41539fa787e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2960251732087306360, guid: 70b9b71b218acdb47892b41539fa787e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
