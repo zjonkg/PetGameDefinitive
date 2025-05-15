@@ -8,6 +8,7 @@ using UnityEngine.UI; // Asegúrate de usar esto si vas a mostrar el tiempo en pa
 using ShyLaura.Database;
 using Newtonsoft.Json;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.Networking;
 
 public class MemoryGameManagerUI : MinigamesBase
 {
@@ -116,18 +117,20 @@ public class MemoryGameManagerUI : MinigamesBase
 
     private IEnumerator OnCompleteGame()
     {
+        int playerId =  int.Parse(PlayerPrefs.GetString("player_id"));
+        int matchId = 1;
+        int score = CalculateScore();
+        int coinGained = CalculateCoins();
+
+        StartCoroutine(PostGameScore(playerId, matchId, score, coinGained));
+
         timerRunning = false;
         StopTimerAnimation();
         yield return new WaitForSeconds(0.75f);
 
         Debug.Log("Has ganado");
 
-        int playerId = PlayerPrefs.GetInt("player_id");
-        int matchId = 1;
-        int score = CalculateScore();
-        int coinGained = CalculateCoins();
-
-        PostGameScore(playerId, matchId, score, coinGained);
+        
 
         /*
         PlayerGameData data = new PlayerGameData
@@ -251,6 +254,14 @@ public class MemoryGameManagerUI : MinigamesBase
             StopTimerAnimation();
             // Aquí puedes poner lógica para cuando se acabe el tiempo (perder, reiniciar, etc.)
         }
+    }
+
+    public class GameScoreData
+    {
+        public int id_user;
+        public int id_minigame;
+        public int score;
+        public int money_earned;
     }
 
     private IEnumerator PostGameScore(int userId, int minigameId, int score, int moneyEarned)
