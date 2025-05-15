@@ -13,6 +13,9 @@ public class MemoryGameManagerUI : MinigamesBase
 {
     public static MemoryGameManagerUI Instance { get; private set; }
     public GameObject winPanel;
+    public GameObject losePanel;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI coinsText;
     [SerializeField] private CardGroup cardGroup;
     [SerializeField] private List<CardSingleUI> cardSingleUIList = new List<CardSingleUI>();
     [SerializeField] private TextMeshProUGUI timerText;
@@ -150,21 +153,24 @@ public class MemoryGameManagerUI : MinigamesBase
                 Debug.Log(error);
                 Debug.Log("Datos guardados en la DB.");
             });
+        scoreText.text = score.ToString();
+        coinsText.text = coinGained.ToString();
+        winPanel.SetActive(true);
 
 
-       /* using (var scoreDb = new ScoreMatch())
-        {
+        /* using (var scoreDb = new ScoreMatch())
+         {
 
-            scoreDb.insertData(playerId, matchId, score, coinGained);
-
-
-
-        );
+             scoreDb.insertData(playerId, matchId, score, coinGained);
 
 
-            winPanel.SetActive(true);
-        }
-       */
+
+         );
+
+
+
+         }
+        */
     }
 
 
@@ -245,6 +251,7 @@ public class MemoryGameManagerUI : MinigamesBase
             timerRunning = false;
             timerText.text = "00:00";
             Debug.Log("Tiempo agotado");
+            losePanel.SetActive(true); // Mostrar el panel de derrota activo
             StopTimerAnimation();
             // Aquí puedes poner lógica para cuando se acabe el tiempo (perder, reiniciar, etc.)
         }
