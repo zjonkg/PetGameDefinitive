@@ -122,11 +122,14 @@ public class MemoryGameManagerUI : MinigamesBase
 
         Debug.Log("Has ganado");
 
-        string playerId = PlayerPrefs.GetString("player_id", "default_id");
-        string matchId = "1";
+        int playerId = PlayerPrefs.GetInt("player_id");
+        int matchId = 1;
         int score = CalculateScore();
         int coinGained = CalculateCoins();
 
+        PostGameScore(playerId, matchId, score, coinGained);
+
+        /*
         PlayerGameData data = new PlayerGameData
         {
             id = playerId,
@@ -150,21 +153,21 @@ public class MemoryGameManagerUI : MinigamesBase
                 Debug.Log(error);
                 Debug.Log("Datos guardados en la DB.");
             });
+        */
+
+        /* using (var scoreDb = new ScoreMatch())
+         {
+
+             scoreDb.insertData(playerId, matchId, score, coinGained);
 
 
-       /* using (var scoreDb = new ScoreMatch())
-        {
 
-            scoreDb.insertData(playerId, matchId, score, coinGained);
+         );
 
 
-
-        );
-
-
-            winPanel.SetActive(true);
-        }
-       */
+             winPanel.SetActive(true);
+         }
+        */
     }
 
 
@@ -247,6 +250,46 @@ public class MemoryGameManagerUI : MinigamesBase
             Debug.Log("Tiempo agotado");
             StopTimerAnimation();
             // Aquí puedes poner lógica para cuando se acabe el tiempo (perder, reiniciar, etc.)
+        }
+    }
+
+    private IEnumerator PostGameScore(int userId, int minigameId, int score, int moneyEarned)
+    {
+        string url = "http://127.0.0.1:8000/play"; // Reemplaza con tu URL
+
+        // Crear el objeto de datos
+        GameScoreData scoreData = new GameScoreData
+        {
+            id_user = userId,
+            id_minigame = minigameId,
+            score = score,
+            money_earned = moneyEarned
+        };
+
+        // Convertir a JSON
+        string jsonData = JsonUtility.ToJson(scoreData);
+        Debug.Log("Enviando JSON: " + jsonData);
+
+        // Configurar la solicitud
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        // Enviar la solicitud y esperar respuesta
+        yield return request.SendWebRequest();
+
+        // Manejar la respuesta
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Respuesta del servidor: " + request.downloadHandler.text);
+            // Aquí puedes procesar la respuesta si es necesario
+        }
+        else
+        {
+            Debug.LogError("Error al enviar datos: " + request.error);
+            Debug.LogError("Respuesta del servidor: " + request.downloadHandler.text);
         }
     }
 }
