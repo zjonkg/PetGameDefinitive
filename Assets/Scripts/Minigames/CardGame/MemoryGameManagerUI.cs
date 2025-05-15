@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI; // Asegúrate de usar esto si vas a mostrar el tiempo en pantalla
+using UnityEngine.UI; // AsegÃºrate de usar esto si vas a mostrar el tiempo en pantalla
 using ShyLaura.Database;
 using Newtonsoft.Json;
 using UnityEngine.SocialPlatforms.Impl;
@@ -14,6 +14,9 @@ public class MemoryGameManagerUI : MinigamesBase
 {
     public static MemoryGameManagerUI Instance { get; private set; }
     public GameObject winPanel;
+    public GameObject losePanel;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI coinsText;
     [SerializeField] private CardGroup cardGroup;
     [SerializeField] private List<CardSingleUI> cardSingleUIList = new List<CardSingleUI>();
     [SerializeField] private TextMeshProUGUI timerText;
@@ -42,7 +45,7 @@ public class MemoryGameManagerUI : MinigamesBase
             int seconds = Mathf.FloorToInt(timeRemaining % 60);
             timerText.text = $"{minutes:00}:{seconds:00}";
 
-            // Activar animación si quedan 10 segundos o menos, y no se ha activado antes
+            // Activar animaciÃ³n si quedan 10 segundos o menos, y no se ha activado antes
             if (timerRunning && timeRemaining <= 10f && !lowTimeWarningTriggered)
             {
                 lowTimeWarningTriggered = true;
@@ -156,7 +159,12 @@ public class MemoryGameManagerUI : MinigamesBase
                 Debug.Log(error);
                 Debug.Log("Datos guardados en la DB.");
             });
+
         */
+
+        /* using (var scoreDb = new ScoreMatch())
+         {
+
 
         /* using (var scoreDb = new ScoreMatch())
          {
@@ -166,6 +174,7 @@ public class MemoryGameManagerUI : MinigamesBase
 
 
          );
+
 
 
              winPanel.SetActive(true);
@@ -251,8 +260,9 @@ public class MemoryGameManagerUI : MinigamesBase
             timerRunning = false;
             timerText.text = "00:00";
             Debug.Log("Tiempo agotado");
+            losePanel.SetActive(true); // Mostrar el panel de derrota activo
             StopTimerAnimation();
-            // Aquí puedes poner lógica para cuando se acabe el tiempo (perder, reiniciar, etc.)
+            // AquÃ­ puedes poner lÃ³gica para cuando se acabe el tiempo (perder, reiniciar, etc.)
         }
     }
 
@@ -295,7 +305,7 @@ public class MemoryGameManagerUI : MinigamesBase
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Respuesta del servidor: " + request.downloadHandler.text);
-            // Aquí puedes procesar la respuesta si es necesario
+            // AquÃ­ puedes procesar la respuesta si es necesario
         }
         else
         {
