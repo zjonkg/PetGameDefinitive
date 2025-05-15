@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3351a94be03ee3c4cb6e718ca9954742
+guid: ada8ebb31d3df3f4f807a7cb98013702
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4181082801125533865
-    second: flecha-arriba (1)_0
+      213: -2765203933791757268
+    second: Rectangle 48 (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flecha-arriba (1)_0
+      name: Rectangle 48 (1)_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 5
-        width: 208
-        height: 246
+        x: 0
+        y: 0
+        width: 700
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 757da6e385fc9f5c0800000000000000
-      internalID: -4181082801125533865
+      spriteID: c2c54d24ca500a9d0800000000000000
+      internalID: -2765203933791757268
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      flecha-arriba (1)_0: -4181082801125533865
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
