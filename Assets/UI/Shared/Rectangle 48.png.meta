@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3351a94be03ee3c4cb6e718ca9954742
+guid: 2f38c3ce9eaaaf442a410f7b63d18411
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4181082801125533865
-    second: flecha-arriba (1)_0
+      213: -6239971606345089765
+    second: Rectangle 48_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flecha-arriba (1)_0
+      name: Rectangle 48_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 5
-        width: 208
-        height: 246
+        x: 0
+        y: 0
+        width: 800
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 757da6e385fc9f5c0800000000000000
-      internalID: -4181082801125533865
+      spriteID: b1df64382ea2769a0800000000000000
+      internalID: -6239971606345089765
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      flecha-arriba (1)_0: -4181082801125533865
+      Rectangle 48_0: -6239971606345089765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

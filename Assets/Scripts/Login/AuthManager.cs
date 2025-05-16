@@ -57,6 +57,7 @@ public class AuthManager : MonoBehaviour
             },
             (error) =>
             {
+                AnimationError.Instance.ShowPopup("Error", "Clave jaja");
                 Debug.LogError("Error en login: " + error);
             }
         ));

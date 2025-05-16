@@ -1620,6 +1620,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1758456187451158630, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758456187451158630, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.42
+      objectReference: {fileID: 0}
     - target: {fileID: 2845363143246787458, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1787,6 +1795,22 @@ PrefabInstance:
     - target: {fileID: 6429027111446836892, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879077769717220022, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.955
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879077769717220022, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.045
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879077769717220022, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879077769717220022, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8121903120202843261, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
       propertyPath: m_AnchorMax.y

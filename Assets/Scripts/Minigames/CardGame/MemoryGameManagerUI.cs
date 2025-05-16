@@ -276,7 +276,7 @@ public class MemoryGameManagerUI : MinigamesBase
 
     private IEnumerator PostGameScore(int userId, int minigameId, int score, int moneyEarned)
     {
-        string url = "http://127.0.0.1:8000/play"; // Reemplaza con tu URL
+        string url = "https://api-management-pet-production.up.railway.app/play/";
 
         // Crear el objeto de datos
         GameScoreData scoreData = new GameScoreData
