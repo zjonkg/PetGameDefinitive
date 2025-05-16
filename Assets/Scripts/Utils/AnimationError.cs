@@ -16,7 +16,7 @@ public class AnimationError : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            Debug.Log("AnimationError Singleton registrado");
+            DontDestroyOnLoad(gameObject);
         }
         else
             Destroy(gameObject);
