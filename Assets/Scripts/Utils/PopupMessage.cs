@@ -41,7 +41,7 @@ public class PopupMessage : MonoBehaviour
                     .OnComplete(() =>
                     {
 
-                        DOVirtual.DelayedCall(2.5f, () => HidePopup());
+                        DOVirtual.DelayedCall(1.5f, () => HidePopup());
                     });
             });
     }

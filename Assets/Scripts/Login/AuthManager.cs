@@ -92,13 +92,21 @@ public class AuthManager : MonoBehaviour
             (response) =>
             {
                 Debug.Log("Registro exitoso. Respuesta del servidor:");
-                StartCoroutine(LoginCoroutine(email, password));
+                PopupMessage.Instance.ShowPopup("Exitoso", "Cuenta creada exitosamente");
+                StartCoroutine(OnRegistrationSuccess(email, password));
             },
             (error) =>
             {
-
+                AnimationError.Instance.ShowPopup("Error", "Cuenta no creada, correo electrónico o usuario ya registrado");
             }
         ));
+    }
+
+    private IEnumerator OnRegistrationSuccess(string email, string password)
+    {
+        
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(LoginCoroutine(email, password));
     }
     private IEnumerator LoginCoroutine(string email, string password)
     {
