@@ -20,7 +20,7 @@ public class CardSingleUI : MonoBehaviour
     [Header("DoTween Animation")]
     private Vector3 selectRotation = new Vector3(0, 180, 0); // Back position
     private Vector3 deselectRotation = new Vector3(0, 0, 0);   // Front position
-    private float duration = 1f; // A bit slower for clarity
+    private float duration = 1.25f; // A bit slower for clarity
     private Tweener[] tweener = new Tweener[3];
 
     private void Awake()

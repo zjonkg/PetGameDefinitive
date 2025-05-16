@@ -10,7 +10,6 @@ public class ProcessQRController : MonoBehaviour
     private string apiUrl = "https://api-management-pet-production.up.railway.app/pets/validate_qr";
     private string apiUrl2 = "https://api-management-pet-production.up.railway.app/pets/assign_pet";
 
-    [SerializeField] private TextMeshProUGUI _textOut;
 
     public void ValidateQRCodeFromExternal(string qrCode, string userId)
     {
@@ -27,9 +26,6 @@ public class ProcessQRController : MonoBehaviour
             null,
             (response) =>
             {
-                // Manejo de la respuesta exitosa
-                _textOut.text = $"Valid: {response.valid}\nMensaje: {response.message}";
-
                 if (response.valid)
                 {
                     Debug.Log("QR válido, asignando mascota...");
@@ -38,9 +34,8 @@ public class ProcessQRController : MonoBehaviour
             },
             (error) =>
             {
-                // Manejo del error
                 Debug.LogError("Error en validación: " + error);
-                _textOut.text = "Error: " + error;
+                AnimationError.Instance.ShowPopup("Error", "QR inválido");
             }
         );
     }
@@ -61,14 +56,13 @@ public class ProcessQRController : MonoBehaviour
             {
                 // Manejo de la respuesta exitosa
                 Debug.Log("Respuesta de asignación: Mascota asignada correctamente.");
-                _textOut.text = "Mascota asignada correctamente.";
                 SceneManager.LoadScene("House");
             },
             (error) =>
             {
                 // Manejo del error
                 Debug.LogError("Error en asignación: " + error);
-                _textOut.text = "Error en asignación: " + error;
+                AnimationError.Instance.ShowPopup("Error", "Mascota ya asignada a otro usuario");
             }
         );
     }

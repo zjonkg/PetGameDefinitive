@@ -12,7 +12,8 @@ public class RadialIndicatorClick : MonoBehaviour
 
     [Header("Scene Names")]
     private string sceneIfPlayerIdExists = "House"; 
-    private string sceneIfPlayerIdMissing = "LoginScreen";   
+    private string sceneIfPlayerIdMissing = "LoginScreen";
+    private string sceneIfPlayerMascotIsFalse = "QRScreen";
 
     private float timer = 0f;
     private bool isFilling = true;
@@ -46,7 +47,14 @@ public class RadialIndicatorClick : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("player_id") && !string.IsNullOrEmpty(PlayerPrefs.GetString("player_id")))
         {
-            SceneManager.LoadScene(sceneIfPlayerIdExists);
+            if (PlayerPrefs.GetString("has_mascot") == "False")
+            {
+                SceneManager.LoadScene(sceneIfPlayerMascotIsFalse);
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneIfPlayerIdExists);
+            }
         }
         else
         {

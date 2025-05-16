@@ -1,6 +1,7 @@
 using MyGame.Auth;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class AuthManager : MonoBehaviour
     public static AuthManager Instance { get; private set; }
 
     private string apiUrl = "https://api-management-pet-production.up.railway.app/user/login";
-    private string registerUrl = "https://api-management-pet-production.up.railway.app/user/singup";
+    private string registerUrl = "https://api-management-pet-production.up.railway.app/user/signup";
 
     [SerializeField]
     public TMP_Text textMeshPro; // Cambia el tipo a TMP_Text
@@ -46,7 +47,8 @@ public class AuthManager : MonoBehaviour
                 PlayerPrefs.SetString("has_mascot", response.has_mascot.ToString());
                 PlayerPrefs.Save();
 
-                if (response.has_mascot) {
+                if (response.has_mascot)
+                {
                     SceneManager.LoadScene("House");
                     return;
                 }
@@ -57,11 +59,14 @@ public class AuthManager : MonoBehaviour
             },
             (error) =>
             {
-                AnimationError.Instance.ShowPopup("Error", "Clave jaja");
+                AnimationError.Instance.ShowPopup("Error", "Credenciales incorrectas");
                 Debug.LogError("Error en login: " + error);
             }
         ));
     }
+
+
+
 
     public void Register(string username, string email, string password, string birthday)
     {
@@ -76,7 +81,7 @@ public class AuthManager : MonoBehaviour
 
         RegisterRequest requestData = new RegisterRequest(username, email, password, formattedBirthday, "");
 
-        // Imprimir los datos enviados en la solicitud
+
         Debug.Log("Datos enviados en la solicitud:");
         Debug.Log(JsonConvert.SerializeObject(requestData, Formatting.Indented));
 
@@ -87,31 +92,44 @@ public class AuthManager : MonoBehaviour
             (response) =>
             {
                 Debug.Log("Registro exitoso. Respuesta del servidor:");
-                Debug.Log(JsonConvert.SerializeObject(response, Formatting.Indented));
-                textMeshPro.text = "Registro exitoso. Mensaje: " + response.message;
+                StartCoroutine(LoginCoroutine(email, password));
             },
             (error) =>
             {
-                Debug.LogError("Error en el registro. Respuesta del servidor:");
-                Debug.LogError(error);
 
-                try
-                {
-                    // Deserializa el error como HTTPValidationError
-                    var validationError = JsonConvert.DeserializeObject<HTTPValidationError>(error);
-
-                    // Itera sobre los detalles del error
-                    foreach (var detail in validationError.detail)
-                    {
-                        Debug.LogError($"Campo: {string.Join(", ", detail.loc)}, Mensaje: {detail.msg}, Tipo: {detail.type}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogError("No se pudo analizar el error JSON: " + ex.Message);
-                }
             }
         ));
     }
-}
+    private IEnumerator LoginCoroutine(string email, string password)
+    {
+        LoginRequest requestData = new LoginRequest(email, password);
 
+        yield return StartCoroutine(HttpService.Instance.SendRequest<LoginResponse>(
+            apiUrl,
+            "POST",
+            requestData,
+            (response) =>
+            {
+                Debug.Log("Login exitoso. Token: " + response);
+                PlayerPrefs.SetString("player_id", response.id.ToString());
+                PlayerPrefs.SetString("has_mascot", response.has_mascot.ToString());
+                PlayerPrefs.Save();
+
+                if (response.has_mascot)
+                {
+                    SceneManager.LoadScene("House");
+                }
+                else
+                {
+                    SceneManager.LoadScene("QRScreen");
+                }
+            },
+            (error) =>
+            {
+                AnimationError.Instance.ShowPopup("Error", "Credenciales incorrectas");
+                Debug.LogError("Error en login: " + error);
+            }
+        ));
+    }
+
+}
