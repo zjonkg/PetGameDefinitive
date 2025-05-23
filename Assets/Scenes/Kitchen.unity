@@ -1936,6 +1936,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9053199624267309626, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+      propertyPath: m_Constraint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053199624267309626, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+      propertyPath: m_ConstraintCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9220769804979826050, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
