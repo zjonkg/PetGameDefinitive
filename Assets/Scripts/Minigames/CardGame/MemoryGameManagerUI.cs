@@ -20,7 +20,7 @@ public class MemoryGameManagerUI : MinigamesBase
     [SerializeField] private CardGroup cardGroup;
     [SerializeField] private List<CardSingleUI> cardSingleUIList = new List<CardSingleUI>();
     [SerializeField] private TextMeshProUGUI timerText;
-    public string apiUrl = "'https://api-management-pet-production.up.railway.app/play/";
+    public string apiUrl = "'https://api-management-pet-production2.up.railway.app/play/";
 
     private float timeRemaining = 0f;
     private bool timerRunning = false;
