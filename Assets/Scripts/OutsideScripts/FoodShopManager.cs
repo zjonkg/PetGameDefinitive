@@ -25,7 +25,7 @@ public class FoodShopManager : MonoBehaviour
 {
     public GameObject itemShopPrefab;
     public Transform itemsParent;
-    private string apiUrl = "https://api-management-pet-production.up.railway.app/items/";
+    private string apiUrl = "https://api-management-pet-production2.up.railway.app/items/";
 
     void Start()
     {
