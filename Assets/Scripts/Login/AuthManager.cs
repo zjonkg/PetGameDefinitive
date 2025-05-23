@@ -11,8 +11,8 @@ public class AuthManager : MonoBehaviour
 {
     public static AuthManager Instance { get; private set; }
 
-    private string apiUrl = "https://api-management-pet-production.up.railway.app/user/login";
-    private string registerUrl = "https://api-management-pet-production.up.railway.app/user/signup";
+    private string apiUrl = "https://api-management-pet-production2.up.railway.app/user/login";
+    private string registerUrl = "https://api-management-pet-production2.up.railway.app/user/signup";
 
     [SerializeField]
     public TMP_Text textMeshPro; // Cambia el tipo a TMP_Text
