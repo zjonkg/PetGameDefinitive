@@ -4,15 +4,19 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI; // Asegúrate de usar esto si vas a mostrar el tiempo en pantalla
+using UnityEngine.UI; // AsegÃºrate de usar esto si vas a mostrar el tiempo en pantalla
 using ShyLaura.Database;
 using Newtonsoft.Json;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.Networking;
 
 public class MemoryGameManagerUI : MinigamesBase
 {
     public static MemoryGameManagerUI Instance { get; private set; }
     public GameObject winPanel;
+    public GameObject losePanel;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI coinsText;
     [SerializeField] private CardGroup cardGroup;
     [SerializeField] private List<CardSingleUI> cardSingleUIList = new List<CardSingleUI>();
     [SerializeField] private TextMeshProUGUI timerText;
@@ -41,7 +45,7 @@ public class MemoryGameManagerUI : MinigamesBase
             int seconds = Mathf.FloorToInt(timeRemaining % 60);
             timerText.text = $"{minutes:00}:{seconds:00}";
 
-            // Activar animación si quedan 10 segundos o menos, y no se ha activado antes
+            // Activar animaciÃ³n si quedan 10 segundos o menos, y no se ha activado antes
             if (timerRunning && timeRemaining <= 10f && !lowTimeWarningTriggered)
             {
                 lowTimeWarningTriggered = true;
@@ -116,17 +120,22 @@ public class MemoryGameManagerUI : MinigamesBase
 
     private IEnumerator OnCompleteGame()
     {
+        int playerId =  int.Parse(PlayerPrefs.GetString("player_id"));
+        int matchId = 1;
+        int score = CalculateScore();
+        int coinGained = CalculateCoins();
+
+        StartCoroutine(PostGameScore(playerId, matchId, score, coinGained));
+
         timerRunning = false;
         StopTimerAnimation();
         yield return new WaitForSeconds(0.75f);
 
         Debug.Log("Has ganado");
 
-        string playerId = PlayerPrefs.GetString("player_id", "default_id");
-        string matchId = "1";
-        int score = CalculateScore();
-        int coinGained = CalculateCoins();
+        
 
+        /*
         PlayerGameData data = new PlayerGameData
         {
             id = playerId,
@@ -151,20 +160,26 @@ public class MemoryGameManagerUI : MinigamesBase
                 Debug.Log("Datos guardados en la DB.");
             });
 
+        */
 
-       /* using (var scoreDb = new ScoreMatch())
-        {
-
-            scoreDb.insertData(playerId, matchId, score, coinGained);
-
+        /* using (var scoreDb = new ScoreMatch())
+         {
 
 
-        );
+        /* using (var scoreDb = new ScoreMatch())
+         {
+
+             scoreDb.insertData(playerId, matchId, score, coinGained);
 
 
-            winPanel.SetActive(true);
-        }
-       */
+
+         );
+
+
+
+             winPanel.SetActive(true);
+         }
+        */
     }
 
 
@@ -245,8 +260,57 @@ public class MemoryGameManagerUI : MinigamesBase
             timerRunning = false;
             timerText.text = "00:00";
             Debug.Log("Tiempo agotado");
+            losePanel.SetActive(true); // Mostrar el panel de derrota activo
             StopTimerAnimation();
-            // Aquí puedes poner lógica para cuando se acabe el tiempo (perder, reiniciar, etc.)
+            // AquÃ­ puedes poner lÃ³gica para cuando se acabe el tiempo (perder, reiniciar, etc.)
+        }
+    }
+
+    public class GameScoreData
+    {
+        public int id_user;
+        public int id_minigame;
+        public int score;
+        public int money_earned;
+    }
+
+    private IEnumerator PostGameScore(int userId, int minigameId, int score, int moneyEarned)
+    {
+        string url = "https://api-management-pet-production.up.railway.app/play/";
+
+        // Crear el objeto de datos
+        GameScoreData scoreData = new GameScoreData
+        {
+            id_user = userId,
+            id_minigame = minigameId,
+            score = score,
+            money_earned = moneyEarned
+        };
+
+        // Convertir a JSON
+        string jsonData = JsonUtility.ToJson(scoreData);
+        Debug.Log("Enviando JSON: " + jsonData);
+
+        // Configurar la solicitud
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        // Enviar la solicitud y esperar respuesta
+        yield return request.SendWebRequest();
+
+        // Manejar la respuesta
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Respuesta del servidor: " + request.downloadHandler.text);
+            // AquÃ­ puedes procesar la respuesta si es necesario
+        }
+        else
+        {
+            Debug.LogError("Error al enviar datos: " + request.error);
+            Debug.LogError("Respuesta del servidor: " + request.downloadHandler.text);
         }
     }
 }

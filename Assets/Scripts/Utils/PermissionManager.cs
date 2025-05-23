@@ -7,8 +7,11 @@ public class PermissionManager : MonoBehaviour
     private readonly string[] requiredPermissions = {
         Permission.Camera,
         Permission.Microphone,
-        Permission.FineLocation
+        Permission.FineLocation,
+        POST_NOTIFICATIONS
     };
+
+    private const string POST_NOTIFICATIONS = "android.permission.POST_NOTIFICATIONS";
 
     private void Start()
     {

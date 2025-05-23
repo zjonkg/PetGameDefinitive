@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 43038de0178149c488b87a08ecbfba2d
+guid: 2f964f387e3a22147ac5ef142bb2801d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2456654998995992411
-    second: Rectangle 17_0
+      213: -1805721541892880064
+    second: Button2 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -109,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rectangle 17_0
+      name: Button2 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 262
-        height: 50
+        width: 229
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5ff7d6a4bac71220800000000000000
-      internalID: 2456654998995992411
+      spriteID: 049443423d9c0f6e0800000000000000
+      internalID: -1805721541892880064
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rectangle 17_0: 2456654998995992411
+      Button2 1_0: -1805721541892880064
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
