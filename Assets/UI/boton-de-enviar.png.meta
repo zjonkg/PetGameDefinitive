@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3208897bec28da343ba5f4f3e503046b
+guid: 5c3249096f143fe4c97068b4fb1508ab
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -600840519851056016
-    second: cara-sonriente_0
+      213: -456037977845057193
+    second: boton-de-enviar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cara-sonriente_0
+      name: boton-de-enviar_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
+        x: 7
+        y: 10
+        width: 243
+        height: 239
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 074ed970bb269a7f0800000000000000
-      internalID: -600840519851056016
+      spriteID: 759357610e3dba9f0800000000000000
+      internalID: -456037977845057193
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cara-sonriente_0: -600840519851056016
+      boton-de-enviar_0: -456037977845057193
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
