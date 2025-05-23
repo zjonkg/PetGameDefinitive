@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class ProcessQRController : MonoBehaviour
 {
-    private string apiUrl = "https://api-management-pet-production.up.railway.app/pets/validate_qr";
-    private string apiUrl2 = "https://api-management-pet-production.up.railway.app/pets/assign_pet";
+    private string apiUrl = "https://api-management-pet-production2.up.railway.app/pets/validate_qr";
+    private string apiUrl2 = "https://api-management-pet-production2.up.railway.app/pets/assign_pet";
 
     [SerializeField] private TextMeshProUGUI _textOut;
 

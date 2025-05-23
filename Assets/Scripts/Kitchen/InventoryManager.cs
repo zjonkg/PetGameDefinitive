@@ -26,7 +26,7 @@ public class Inventory3DCarousel : MonoBehaviour
 
     IEnumerator LoadUserInventory(int userId)
     {
-        string requestUrl = $"https://api-management-pet-production.up.railway.app/items/user/{userId}/items";
+        string requestUrl = $"https://api-management-pet-production2.up.railway.app/items/user/{userId}/items";
 
         yield return HttpService.Instance.SendRequest<List<UserItem>>(
             requestUrl,
@@ -184,7 +184,7 @@ public class Inventory3DCarousel : MonoBehaviour
 
     IEnumerator EatItemRequest(int playerId, int itemId)
     {
-        string url = $"https://api-management-pet-production.up.railway.app/items/eat/{playerId}/{itemId}";
+        string url = $"https://api-management-pet-production2.up.railway.app/items/eat/{playerId}/{itemId}";
 
         yield return HttpService.Instance.SendRequest<ConsumeItemResponse>(
             url,
