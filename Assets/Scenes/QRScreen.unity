@@ -839,8 +839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d44d4d179ac28408f53fd6dba16902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 1256253878}
-  errorText: {fileID: 1807308860}
 --- !u!1 &1256253878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,8 +1191,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: 1500, y: 50}
+  m_AnchoredPosition: {x: 0, y: -400.40002}
+  m_SizeDelta: {x: 1500, y: -150.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1732116123
 CanvasRenderer:
@@ -1224,17 +1222,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCAN THE QR
+  m_text: 'Escanea el QR
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 774453f7f20544242a255a60f7fb769f, type: 2}
+  m_sharedMaterial: {fileID: 907429364480156750, guid: 774453f7f20544242a255a60f7fb769f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278201324
-  m_fontColor: {r: 0.9245283, g: 0.16878918, b: 0, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1488,7 +1488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: hola
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
