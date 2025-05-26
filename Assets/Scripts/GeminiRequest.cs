@@ -15,10 +15,9 @@ public class GeminiRequestUI : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button sendButton;
-    [SerializeField] private TMP_Text outputText; // (opcional)
 
-    [Header("ChatBubble Handler")]
-    [SerializeField] private GameHandler_ChatBubble chatHandler;
+    [Header("Chat Content")]
+    [SerializeField] private Transform chatContent; // << Scroll View Content aquí
 
     private void Start()
     {
@@ -30,7 +29,9 @@ public class GeminiRequestUI : MonoBehaviour
         string userInput = inputField.text;
         if (!string.IsNullOrEmpty(userInput))
         {
+            MostrarBurbuja(userInput, true); // Mostrar mensaje del usuario
             StartCoroutine(SendGeminiRequest(userInput));
+            inputField.text = ""; // Limpiar input
         }
     }
 
@@ -53,19 +54,11 @@ public class GeminiRequestUI : MonoBehaviour
                 string rawJson = request.downloadHandler.text;
                 string generatedText = ExtractTextFromResponse(rawJson);
 
-                Debug.Log("Response: " + generatedText);
-
-                if (outputText != null)
-                    outputText.text = generatedText;
-
-                if (chatHandler != null)
-                    chatHandler.ShowChatMessage(generatedText);
+                MostrarBurbuja(generatedText, false); // Mostrar respuesta de Gemini
             }
             else
             {
-                Debug.LogError("Error: " + request.error);
-                if (outputText != null)
-                    outputText.text = "Error: " + request.error;
+                MostrarBurbuja("[Error: " + request.error + "]", false);
             }
         }
     }
@@ -74,23 +67,23 @@ public class GeminiRequestUI : MonoBehaviour
     {
         try
         {
-            // Parseamos el JSON
             JObject response = JObject.Parse(json);
-
-            // Accedemos al primer candidato y extraemos el texto
             string text = response["candidates"]?[0]?["content"]?["parts"]?[0]?["text"]?.ToString();
-
             return text ?? "[Texto no encontrado]";
         }
         catch (Exception ex)
         {
-            // En caso de error, devolvemos un mensaje de error
             Debug.LogError("Error al extraer el texto: " + ex.Message);
             return "[Error al procesar el JSON]";
         }
     }
 
-    // Clases auxiliares para el JSON de Gemini
+    private void MostrarBurbuja(string texto, bool esUsuario)
+    {
+        BurbujaFactory.CrearBurbuja(texto, esUsuario, chatContent);
+    }
+
+    // Clases auxiliares para JSON
     [System.Serializable]
     public class Part
     {
