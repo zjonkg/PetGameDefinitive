@@ -3261,6 +3261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934175812}
   - component: {fileID: 934175811}
+  - component: {fileID: 934175813}
   m_Layer: 0
   m_Name: GeminiController
   m_TagString: Untagged
@@ -3275,7 +3276,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934175810}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f886a37cc25924f478bc74af5443f225, type: 3}
   m_Name: 
@@ -3300,6 +3301,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934175813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934175810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7a224302b762e40aac672992d91eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  railwayUrl: https://iapetv3-production.up.railway.app/chat
+  sessionId: 3
+  inputField: {fileID: 1653434822}
+  sendButton: {fileID: 1100266659}
+  wcp: {fileID: 747605959}
 --- !u!1001 &963201303
 PrefabInstance:
   m_ObjectHideFlags: 0
