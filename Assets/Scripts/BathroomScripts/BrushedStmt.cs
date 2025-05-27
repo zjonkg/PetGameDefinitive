@@ -7,6 +7,7 @@ public class BrushedStmt : IPetStatement
     Animator animator;
     private MonoBehaviour mono; // Coroutine!! 
     PetManager petManager;
+    Animator petAnim;
 
     public BrushedStmt(GameObject showerUI, Animator animator, PetManager petManager, MonoBehaviour mono, Animator petAnim)
     {
@@ -14,12 +15,14 @@ public class BrushedStmt : IPetStatement
         this.animator = animator;
         this.mono = mono;
         this.petManager = petManager;
+        this.petAnim = petAnim;
     }
     public void EnterState()
     {
         Debug.Log("Entrando al estado Brushed");
         animator.Play("BrushButton");
-        mono.StartCoroutine(brushToIdle()); // Start the coroutine to play shower animation
+        petAnim.Play("brushed");
+        mono.StartCoroutine(brushToIdle()); 
     }
 
     public void ExitState()
