@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.UI;
 using Newtonsoft.Json.Linq;
 using System;
+using WCP;
+using System.Linq;
 
 public class GeminiRequestUI : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class GeminiRequestUI : MonoBehaviour
 
     [Header("Chat Content")]
     [SerializeField] private Transform chatContent; // << Scroll View Content aquí
+    public WChatPanel wcp;
 
     private void Start()
     {
@@ -29,6 +32,7 @@ public class GeminiRequestUI : MonoBehaviour
         string userInput = inputField.text;
         if (!string.IsNullOrEmpty(userInput))
         {
+            userInput = userInput + " ";
             MostrarBurbuja(userInput, true); // Mostrar mensaje del usuario
             StartCoroutine(SendGeminiRequest(userInput));
             inputField.text = ""; // Limpiar input
@@ -80,7 +84,7 @@ public class GeminiRequestUI : MonoBehaviour
 
     private void MostrarBurbuja(string texto, bool esUsuario)
     {
-        BurbujaFactory.CrearBurbuja(texto, esUsuario, chatContent);
+        wcp.AddChatAndUpdate(!esUsuario, texto, 1);
     }
 
     // Clases auxiliares para JSON
