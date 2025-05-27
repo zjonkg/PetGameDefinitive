@@ -123,7 +123,7 @@ public class ShoppingCartManager : MonoBehaviour
     private void SendCartToServer(ShoppingCartPayload payload)
     {
         StartCoroutine(HttpService.Instance.SendRequest<CartResponse>(
-            "https://api-management-pet-production.up.railway.app/items/buy",
+            "https://api-management-pet-production2.up.railway.app/items/buy",
             "PUT",
             payload,
             (response) =>
