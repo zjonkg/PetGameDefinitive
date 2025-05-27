@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using Mono.Cecil.Cil;
 
 public class SceneSwipe : MonoBehaviour
 {
@@ -47,7 +46,9 @@ public class SceneSwipe : MonoBehaviour
 
     void DetectSwipe()
     {
-        if (isTransitioning || InputState.IsDragging) return;
+
+        if (InputState.IsSwipeBlocked) return;
+        if (isTransitioning) return;
 
         if (Input.touchCount > 0)
         {
