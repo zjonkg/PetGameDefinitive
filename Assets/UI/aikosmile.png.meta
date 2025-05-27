@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      aikosmile_0: -6842961801906908681
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
