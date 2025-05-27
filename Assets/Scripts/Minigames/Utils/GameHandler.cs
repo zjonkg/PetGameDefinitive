@@ -11,4 +11,9 @@ public class GameHandler : MonoBehaviour
     {
         SceneManager.LoadScene("AngryLaura");
     }
+
+    public void GoToGameRoom()
+    {
+        SceneManager.LoadScene("Gameroom");
+    }
 }

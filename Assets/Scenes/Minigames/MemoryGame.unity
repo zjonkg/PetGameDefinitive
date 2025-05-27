@@ -746,13 +746,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847928719}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 847928724}
+        m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
+        m_MethodName: GoToGameRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -874,6 +874,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -437
       objectReference: {fileID: 0}
+    - target: {fileID: 2672811364579914372, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2524709661943058933, guid: 89cadf7ee5e65f14c87a0f6af9592599, type: 3}
     - target: {fileID: 4489031638445673252, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1044,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8845124388917523759, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8854985620527343892, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1867,13 +1871,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2133621468}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2133621473}
+        m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
+        m_MethodName: GoToGameRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

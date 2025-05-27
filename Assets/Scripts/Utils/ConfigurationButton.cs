@@ -7,4 +7,9 @@ public class ConfigurationButton : MonoBehaviour
     {
         SceneManager.LoadScene("Configuration"); 
     }
+
+    public void GoToMiniGameSelector()
+    {
+        SceneManager.LoadScene("MiniGameSelector");
+    }
 }
