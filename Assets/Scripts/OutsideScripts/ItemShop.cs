@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,9 @@ public class ItemShop : MonoBehaviour
 
     private ItemData item;
     private int selectedQuantity = 0;
+
+    [Tooltip("Lista de imágenes disponibles")]
+    public List<Sprite> itemSprites;
 
     // Evento para notificar cambios en el carrito
     public static System.Action<ItemData, int> OnItemUpdated;
@@ -56,7 +60,16 @@ public class ItemShop : MonoBehaviour
     {
         quantityText.text = selectedQuantity.ToString();
 
-        // Cargar imagen o usar por defecto
-        itemImage.sprite = defaultSprite;
+        Sprite spriteToUse = defaultSprite;
+
+        if (itemSprites != null && itemSprites.Count > 0)
+        {
+            spriteToUse = itemSprites.Find(s => s.name == item.name);
+
+            if (spriteToUse == null)
+                spriteToUse = defaultSprite;
+        }
+
+        itemImage.sprite = spriteToUse;
     }
 }

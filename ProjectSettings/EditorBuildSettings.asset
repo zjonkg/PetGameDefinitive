@@ -38,6 +38,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hall2.unity
     guid: 1b39dccf9c4307d4f96e1b40097d1c92
+  - enabled: 1
+    path: Assets/Scenes/MiniGameSelector.unity
+    guid: d5f705bef4f54e24aa54ca04a15d77c0
+  - enabled: 1
+    path: Assets/Scenes/Gameroom.unity
+    guid: 229b8c68e4405494396d5e85a7dafa71
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 719160bb5df15e145ab7f87dea4b98be, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8639b141c86c0624db2ce806eac69a6b, type: 2}
