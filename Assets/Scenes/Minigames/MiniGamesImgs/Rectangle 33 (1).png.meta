@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f9883a016809a804aa29b223e36f77c4
+guid: 240269e22b3d8644b98cca692394afbf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6842961801906908681
-    second: aikosmile_0
+      213: -374388631221240389
+    second: Rectangle 33 (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: aikosmile_0
+      name: Rectangle 33 (1)_0
       rect:
         serializedVersion: 2
-        x: 102
-        y: 32
-        width: 920
-        height: 987
+        x: 0
+        y: 0
+        width: 412
+        height: 917
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f195c92f7ae801a0800000000000000
-      internalID: -6842961801906908681
+      spriteID: bbdfc140687edcaf0800000000000000
+      internalID: -374388631221240389
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      aikosmile_0: -6842961801906908681
+      Rectangle 33 (1)_0: -374388631221240389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

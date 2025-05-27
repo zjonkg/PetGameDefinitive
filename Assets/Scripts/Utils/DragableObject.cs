@@ -57,10 +57,12 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        InputState.IsDragging = false;
         CheckPositionAndAct();
         moveBackCoroutine = StartCoroutine(SmoothReturn());
+        InputState.IsDragging = false;
+        InputState.LastDragEndTime = Time.time; 
     }
+
 
     private IEnumerator SmoothReturn()
     {

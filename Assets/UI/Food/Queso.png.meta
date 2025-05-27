@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: f9883a016809a804aa29b223e36f77c4
+guid: 0cd4d994a447edb4893c5513884b25b2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6842961801906908681
-    second: aikosmile_0
+      213: 8515948755032081205
+    second: queso_0
+  - first:
+      213: -7850169614713730662
+    second: queso_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: aikosmile_0
+      name: queso_0
       rect:
         serializedVersion: 2
-        x: 102
-        y: 32
-        width: 920
-        height: 987
+        x: 0
+        y: 0
+        width: 512
+        height: 434
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f195c92f7ae801a0800000000000000
-      internalID: -6842961801906908681
+      spriteID: 5330e15f54abe2670800000000000000
+      internalID: 8515948755032081205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: queso_1
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 358
+        width: 66
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a994c60d3589e0390800000000000000
+      internalID: -7850169614713730662
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      aikosmile_0: -6842961801906908681
+      queso_0: 8515948755032081205
+      queso_1: -7850169614713730662
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
