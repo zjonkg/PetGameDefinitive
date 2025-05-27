@@ -15,6 +15,8 @@ public class RadialIndicatorClick : MonoBehaviour
     private string sceneIfPlayerIdMissing = "LoginScreen";
     private string sceneIfPlayerMascotIsFalse = "QRScreen";
 
+    private string apiUrlBalance = "https://api-management-pet-production.up.railway.app/user/balance";
+
     private float timer = 0f;
     private bool isFilling = true;
 
@@ -53,12 +55,36 @@ public class RadialIndicatorClick : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(sceneIfPlayerIdExists);
+               string playerId = PlayerPrefs.GetString("player_id");
+
+               StartCoroutine(HttpService.Instance.SendRequest<BalanceResponse>(
+               apiUrlBalance + "/" + playerId,
+               "GET",
+                null,
+               (response) =>
+               {
+                   PlayerPrefs.SetString("balance", response.balance);
+                   PlayerPrefs.Save();
+                   Debug.Log(response.balance);
+                   SceneManager.LoadScene(sceneIfPlayerIdExists);
+               },
+               (error) =>
+               {
+               }
+           ));
+                  
+                }
             }
-        }
         else
         {
             SceneManager.LoadScene(sceneIfPlayerIdMissing);
         }
     }
+
+    public class BalanceResponse
+    {
+        public string balance;
+    }
+
+
 }

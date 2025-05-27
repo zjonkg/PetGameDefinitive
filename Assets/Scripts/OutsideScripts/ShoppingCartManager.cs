@@ -129,11 +129,14 @@ public class ShoppingCartManager : MonoBehaviour
             (response) =>
             {
                 Debug.Log("Compra realizada con éxito. Respuesta: " + response.message);
+                PopupMessage.Instance.ShowPopup("Exitoso", "Compra realizada con éxito");
+
                 return;
             },
             (error) =>
             {
                 Debug.LogError("Error en la compra: " + error);
+                AnimationError.Instance.ShowPopup("Error", "Dinero insuficiente para comprar");
             }
         ));
     }
@@ -142,6 +145,7 @@ public class ShoppingCartManager : MonoBehaviour
     {
         public string message;
     }
+
 
 
 }

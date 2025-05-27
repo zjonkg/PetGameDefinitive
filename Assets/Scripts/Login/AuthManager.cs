@@ -15,20 +15,20 @@ public class AuthManager : MonoBehaviour
     private string registerUrl = "https://api-management-pet-production2.up.railway.app/user/signup";
 
     [SerializeField]
-    public TMP_Text textMeshPro; // Cambia el tipo a TMP_Text
+    public TMP_Text textMeshPro; 
 
 
     private void Awake()
     {
-        // Si no hay una instancia previa, esta será la única
+
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Mantener al cambiar de escena (opcional)
+            DontDestroyOnLoad(gameObject); 
         }
         else
         {
-            Destroy(gameObject); // Elimina duplicados si ya hay una instancia
+            Destroy(gameObject); 
         }
     }
 
