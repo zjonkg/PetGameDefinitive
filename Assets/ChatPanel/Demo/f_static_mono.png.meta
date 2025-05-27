@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 494184bf30aa6e344ab63bc5ec580fa8
+guid: a914c6bca34ceff4c9a6f4f62a00afaf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3648807197357730943
-    second: RectangleWhite_0
+      213: -2525741524973092205
+    second: f_static_mono_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RectangleWhite_0
+      name: f_static_mono_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 800
-        height: 450
+        x: 102
+        y: 32
+        width: 920
+        height: 987
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1839a9baf25dc5dc0800000000000000
-      internalID: -3648807197357730943
+      spriteID: 39286890773c2fcd0800000000000000
+      internalID: -2525741524973092205
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RectangleWhite_0: -3648807197357730943
+      f_static_mono_0: -2525741524973092205
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
