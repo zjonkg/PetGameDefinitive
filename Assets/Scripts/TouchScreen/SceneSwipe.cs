@@ -46,7 +46,7 @@ public class SceneSwipe : MonoBehaviour
 
     void DetectSwipe()
     {
-        if (isTransitioning) return;
+        if (isTransitioning || InputState.IsDragging) return;
 
         if (Input.touchCount > 0)
         {

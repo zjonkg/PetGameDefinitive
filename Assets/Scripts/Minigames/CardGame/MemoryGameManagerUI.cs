@@ -133,7 +133,12 @@ public class MemoryGameManagerUI : MinigamesBase
 
         Debug.Log("Has ganado");
 
-        
+        scoreText.text = score.ToString();
+        coinsText.text = coinGained.ToString();
+        winPanel.SetActive(true);
+
+
+
 
         /*
         PlayerGameData data = new PlayerGameData
@@ -236,11 +241,6 @@ public class MemoryGameManagerUI : MinigamesBase
                 return 1.0f;
         }
     }
-
-
-   
-
-
 
 
     private IEnumerator StartCountdownTimer()

@@ -998,6 +998,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5704879611443160184, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7133812892063138004, guid: d1583027a5edf034cafa2cc93b88bb1a, type: 3}
     - target: {fileID: 6037714862539739227, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0
@@ -1040,7 +1044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8845124388917523759, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8854985620527343892, guid: aaeda40869e31c34cbd0415b136a680f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1123,21 +1127,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardList:
   - cardName: Tilin
-    cardImage: {fileID: -1681699130328899306, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
+    cardImage: {fileID: 2103827171, guid: 6ed16904044708a4b9a1eba3673af8f4, type: 3}
   - cardName: Tilin2
-    cardImage: {fileID: -1466642325, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
+    cardImage: {fileID: -406263661, guid: 6ed16904044708a4b9a1eba3673af8f4, type: 3}
   - cardName: Tilin3
-    cardImage: {fileID: -2119987209, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
+    cardImage: {fileID: -2057021658, guid: 6ed16904044708a4b9a1eba3673af8f4, type: 3}
   - cardName: Tilin4
-    cardImage: {fileID: -99050181, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
+    cardImage: {fileID: 1040224553, guid: 6ed16904044708a4b9a1eba3673af8f4, type: 3}
   - cardName: Tilin5
-    cardImage: {fileID: -1500391043, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
+    cardImage: {fileID: 1116347352, guid: 6ed16904044708a4b9a1eba3673af8f4, type: 3}
   - cardName: Tilin6
-    cardImage: {fileID: 65934392, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
+    cardImage: {fileID: -288751760, guid: 6ed16904044708a4b9a1eba3673af8f4, type: 3}
   - cardName: Tilin7
-    cardImage: {fileID: 1569637903, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
+    cardImage: {fileID: -569209295, guid: 6ed16904044708a4b9a1eba3673af8f4, type: 3}
   - cardName: Tilin8
-    cardImage: {fileID: 461295691, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
+    cardImage: {fileID: -220603971, guid: 6ed16904044708a4b9a1eba3673af8f4, type: 3}
   - cardName: Tilin9
     cardImage: {fileID: -2097756213, guid: f7df2e3fed5846347af7a4259f7347ea, type: 3}
   - cardName: Tilin10

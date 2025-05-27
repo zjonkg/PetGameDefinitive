@@ -51,10 +51,13 @@ public class MakeA3DObjectDraggable : MonoBehaviour, IDragHandler, IBeginDragHan
         initialPosition = newPosition; 
     }
 
-    public void OnBeginDrag(PointerEventData eventData) { }
+    public void OnBeginDrag(PointerEventData eventData) {
+        InputState.IsDragging = true;
+    }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        InputState.IsDragging = false;
         CheckPositionAndAct();
         moveBackCoroutine = StartCoroutine(SmoothReturn());
     }
