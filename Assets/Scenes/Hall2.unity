@@ -4989,6 +4989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1375423626}
   - component: {fileID: 1375423625}
+  - component: {fileID: 1375423627}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -5024,6 +5025,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1375423627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375423624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e7b2d3b4b358345b3e3075cf75cc15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplayUI: {fileID: 1630866548}
+  petManager: {fileID: 0}
+  petAnim: {fileID: 1930170381}
+  brushAnim: {fileID: 0}
 --- !u!1001 &1425354599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6174,6 +6191,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f1f812615c39c8146ad5e5b8f24b701d, type: 3}
   m_PrefabInstance: {fileID: 1616369653}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1630866548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8465221129126994840, guid: b62e9ff8dc97d004db03d448794f752b, type: 3}
+  m_PrefabInstance: {fileID: 963201303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1653434820
 GameObject:
   m_ObjectHideFlags: 0
@@ -6786,6 +6808,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f1f812615c39c8146ad5e5b8f24b701d, type: 3}
   m_PrefabInstance: {fileID: 1929525144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1930170381 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5707263184579332271, guid: 686b8b65e6be4e841a4f8fae8b55461e, type: 3}
+  m_PrefabInstance: {fileID: 405553152}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1965207964
 PrefabInstance:
