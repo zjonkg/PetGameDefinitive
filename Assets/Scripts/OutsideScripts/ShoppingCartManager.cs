@@ -130,6 +130,9 @@ public class ShoppingCartManager : MonoBehaviour
             {
                 Debug.Log("Compra realizada con éxito. Respuesta: " + response.message);
                 PopupMessage.Instance.ShowPopup("Exitoso", "Compra realizada con éxito");
+                string balance = PlayerPrefs.GetString("balance"); 
+                balance = (int.Parse(balance) - payload.totalPrice).ToString();
+                PlayerPrefs.SetString("balance", balance);
 
                 return;
             },

@@ -7,11 +7,17 @@ public class VolumeSaveController : MonoBehaviour
     [SerializeField] private Button muteButton = null;
     [SerializeField] private GameObject unmuteSprite = null;
     [SerializeField] private GameObject muteSprite = null;
+    [SerializeField] private MusicManager musicManager = null;
 
     private float previousVolume = 1f;
 
     private void Start()
     {
+        if (musicManager == null)
+        {
+            musicManager = FindObjectOfType<MusicManager>();
+        }
+
         LoadValues();
         volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
         muteButton.onClick.AddListener(OnMuteButtonClicked);
@@ -25,9 +31,11 @@ public class VolumeSaveController : MonoBehaviour
 
     private void OnVolumeChanged(float value)
     {
-        if (!PlayerPrefs.HasKey("IsMuted") || !PlayerPrefs.GetInt("IsMuted", 0).Equals(1))
+        previousVolume = value;
+
+        if (!PlayerPrefs.HasKey("IsMuted") || PlayerPrefs.GetInt("IsMuted", 0) == 0)
         {
-            AudioListener.volume = value;
+            musicManager.SetVolume(value);
         }
 
         PlayerPrefs.SetFloat("VolumeValue", value);
@@ -39,19 +47,11 @@ public class VolumeSaveController : MonoBehaviour
         float volumeValue = PlayerPrefs.GetFloat("VolumeValue", 1f);
         bool isMuted = PlayerPrefs.GetInt("IsMuted", 0) == 1;
 
-        volumeSlider.value = volumeValue;
         previousVolume = volumeValue;
+        volumeSlider.value = volumeValue;
 
-        if (isMuted)
-        {
-            AudioListener.volume = 0f;
-            UpdateMuteButtonUI(true);
-        }
-        else
-        {
-            AudioListener.volume = volumeValue;
-            UpdateMuteButtonUI(false);
-        }
+        musicManager.SetVolume(isMuted ? 0f : volumeValue);
+        UpdateMuteButtonUI(isMuted);
     }
 
     private void OnMuteButtonClicked()
@@ -60,16 +60,14 @@ public class VolumeSaveController : MonoBehaviour
 
         if (isMuted)
         {
-            // Desactivar mute
-            AudioListener.volume = previousVolume;
+            musicManager.SetVolume(previousVolume);
             PlayerPrefs.SetInt("IsMuted", 0);
             UpdateMuteButtonUI(false);
         }
         else
         {
-            // Activar mute
-            previousVolume = AudioListener.volume;
-            AudioListener.volume = 0f;
+            previousVolume = musicManager.GetVolume();
+            musicManager.SetVolume(0f);
             PlayerPrefs.SetInt("IsMuted", 1);
             UpdateMuteButtonUI(true);
         }
